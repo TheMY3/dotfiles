@@ -1,0 +1,91 @@
+pacman
+
+
+pulseaudio-bluetooth bluez bluez-utils blueman
+alacritty kitty
+zsh zsh-history-substring-search zsh-syntax-highlighting
+udisks2 udiskie
+rsync
+jq
+light
+gtk2
+pcsclite 
+otf-font-awesome noto-fonts-emoji ttf-fira-code
+pavucontrol
+wget
+grim slurp swappy
+vim neovim
+powerline powerline-fonts
+man
+npm
+yarn
+imv
+flatpak
+xorg-xwayland
+gnome-keyring
+openssh
+keybase
+keybase-gui
+dunst /// mako
+github-cli
+docker
+docker-compose
+ansible
+terraform
+// spotify bar 
+python-gobject playerctl
+
+lsof -t -i tcp:5432
+
+php php-intl php-sqlit xdebug composer
+
+?
+adobe-source-code-pro-fonts
+
+
+
+
+
+
+
+
+
+yay
+wofi-calc
+// pamac-aur = под вопросом
+sublime-text-4
+1password
+polkit
+phpstorm
+dropbox
+beekeeper-studio-bin 
+lens-bin 
+slack-desktop
+bluemail
+google-chrome 
+twitch-cli-bin 
+
+flatpak
+ticktick
+
+- pip
+// ne nado - pip install virtualenv
+
+//env
+// https://github.com/milgra/tutorials/blob/master/pretty-and-functional-linux-destkop.md
+sudo chmod a+w /sys/class/backlight/amdgpu_bl0/brightness 
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+fish in
+oh my fish
+
+
+links
+https://www.programmingfonts.org/#jetbrainsmono
+todo - set fish theme - https://github.com/starship/starship
+
+
+
+
+maybe - https://gist.github.com/7415963987456321/809f04a30aac61ab12504d8aa0e2111f

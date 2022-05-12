@@ -1,0 +1,173 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar at the bottom of your screen
+    "height": 24, // Waybar height
+    // "width": 1366, // Waybar width
+    // Choose the order of the modules
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "custom/scratchpad-indicator",
+        "custom/spotify"
+    ],
+    // "modules-center": ["sway/window"],
+    "modules-right": [
+        "sway/language",
+        "pulseaudio",
+        "network",
+        "backlight",
+        "battery",
+        "cpu",
+        "memory",
+        "tray",
+        "idle_inhibitor",
+        "custom/dunst",
+        "clock"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{icon} {name}",
+        // "format": "{name}: {icon}",
+        "format-icons": {
+            //"0: General": "",
+            "1:web": "", 
+            "2:code": "",
+            "2:code": "",
+            "3:chat": "",
+            "4:term": "",
+            "5:apps": "",
+            "6:music": "",
+            //"6:docs": "",
+            "urgent": "",
+            "focused": "",
+            "default": "",
+            "persistent": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10,
+        "show-passive-items" : false
+    },
+    "clock": {
+        "timezone": "Europe/Kiev",
+        "format": " {:%b %d %Y (%R)}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><span>{calendar}</span></tt>",
+        "format-alt": "{:%Y-%m-%d}",
+        "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
+        "calendar-weeks-pos": "left",
+        "format-calendar": "<span color='#ecc6d9'><b>{}</b></span>",
+        "format-calendar-weeks": "<span color='#99ffdd'><b>{}</b></span>",
+        "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "interval": 10
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "battery": {
+        "states": {
+            "perfect": 100,
+            "good": 95,
+            "warning": 30,
+            "critical": 10
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-perfect": "",
+        "format-good": "",
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": " {ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "swaymsg exec '$term -e nmtui-connect'"
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        //"format": "{icon} {volume}%",
+        //"format-bluetooth": " {icon} {volume}%",
+
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {volume}% {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+
+
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click-middle": "pavucontrol",
+        // "tooltip-format": "{desc}, {volume}%", // Uncomment for more info
+        "tooltip": false
+    },
+    "custom/spotify": {
+        "exec-if": "pgrep spotify",
+        "exec": "/usr/bin/python3 $HOME/.config/waybar/modules/mediaplayer.py --player spotify",
+        // "interval": 5, // Remove this if your script is endless and write in loop
+        "format": " {}",
+        "max-length": 30,
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "killall spotify"
+        // "on-scroll-up": "playerctl next",
+        // "on-scroll-down": "playerctl previous"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", ""],
+        "on-scroll-up" : "light -A 5",
+        "on-scroll-down" : "light -U 5"
+    },
+    "sway/language": {
+        "format": "{short}",
+        "tooltip": false
+    },
+    "custom/dunst": {
+        "exec": "~/.config/waybar/modules/dunst.sh",
+        "on-click": "dunstctl set-paused toggle",
+        "restart-interval": 1,
+        "tooltip": false
+    },
+    "idle_inhibitor": {
+       "format": "{icon}",
+       "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "custom/scratchpad-indicator": {
+        "interval": 3,
+        "return-type": "json",
+        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? + .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\") | join(\"\\n\") } else empty end'",
+        "format": " {}",
+        "on-click": "exec swaymsg 'scratchpad show'",
+        "on-click-right": "exec swaymsg 'move scratchpad'"
+    }
+}

@@ -1,0 +1,6 @@
+[Default Applications]
+x-scheme-handler/tg=userapp-Telegram Desktop-ADTJL1.desktop
+x-scheme-handler/arctype=arctype.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-ADTJL1.desktop;

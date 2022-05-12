@@ -1,0 +1,36 @@
+#!/bin/sh
+path=$(pwd)
+
+# Home directory
+ln -sf "$path"/.bash_profile "$HOME"/.bash_profile
+ln -sf "$path"/.bashrc "$HOME"/.bashr
+ln -sf "$path"/.gitconfig "$HOME"/.gitconfig
+ln -sf "$path"/.ideavimrc "$HOME"/.ideavimrc
+ln -sf "$path"/.vimrc "$HOME"/.vimrc
+ln -sf "$path"/.zshrc "$HOME"/.zshrc
+# Remove later
+ln -sf "$path"/dep.txt "$HOME"/dep.txt
+
+# Config directory
+[ ! -d "$HOME"/.config ] && mkdir "$HOME"/.config
+
+[ -d "$HOME"/.config/sway ] && rm -rf "$HOME"/.config/sway
+ln -sf "$path"/config/sway/ "$HOME"/.config/sway
+
+[ -d "$HOME"/.config/swaylock ] && rm -rf "$HOME"/.config/swaylock
+ln -sf "$path"/config/swaylock/ "$HOME"/.config/swaylock
+
+[ -d "$HOME"/.config/waybar ] && rm -rf "$HOME"/.config/waybar
+ln -sf "$path"/config/waybar/ "$HOME"/.config/waybar
+chmod -R +x "$HOME"/.config/waybar/modules/
+
+ln -sf "$path"/config/mimeapps.list "$HOME"/.config/mimeapps.list
+ln -sf "$path"/config/pavucontrol.ini "$HOME"/.config/pavucontrol.ini
+
+# Local directory
+[ ! -d "$HOME"/.local ] && mkdir -p "$HOME"/.local/share
+[ ! -d "$HOME"/.local/share ] && mkdir "$HOME"/.local/share
+#[ -d "$HOME"/.local/share/applications ] && rm -rf "$HOME"/.local/share/applications
+#ln -sf "$path"/.local/share/applications "$HOME"/.local/share/applications
+[ -d "$HOME"/.local/share/fonts ] && rm -r "$HOME"/.local/share/fonts
+ln -sf "$path"/local/share/fonts "$HOME"/.local/share/fonts
