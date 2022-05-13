@@ -30,9 +30,7 @@ set $ws6   "6:music"
 
 ### Output configuration
 #
-output * bg ~/Pictures/wallpaper-nord.png fill
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+output * bg ~/.local/share/wallpapers/o38yol.jpg fill
 output HDMI-A-1 resolution 1920x1080 position 1920,0
 
 ### Idle configuration
@@ -51,9 +49,9 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 
 input type:touchpad {
-    dwt enabled 
-    tap enabled 
-    natural_scroll disabled 
+    dwt enabled
+    tap enabled
+    natural_scroll disabled
     middle_emulation enabled
 }
 input type:keyboard {
@@ -210,7 +208,7 @@ bindsym $mod+Shift+v exec clipman pick -t wofi
 
 # Remove titles for windows
 # font pango:monospace 0
-# titlebar_border_thickness 0                                                     
+# titlebar_border_thickness 0
 # titlebar_padding 0
 # default_border pixel
 # default_floating_border pixel
@@ -226,21 +224,24 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
+# borders
+default_border pixel 1
+gaps inner 10
+gaps outer 1
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar {
     swaybar_command waybar
 }
 
 # Hide mouse cursor after a period of inactivity.
-seat seat0 hide_cursor 3000
+seat * hide_cursor 5000
+# seat * hide_cursor when-typing enable
 
-# exec dunst
+exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec udiskie
 
+set $opacity 0.75
+for_window [app_id="kitty"] opacity $opacity
 # Specific window configuration
 for_window    [app_id=".*"]                              sticky enable
 for_window    [window_role="pop-up"]                     floating enable
@@ -250,15 +251,15 @@ for_window    [app_id="udiskie"]                         floating enable
 assign [class="^Firefox$"] $ws1
 assign [class="Slack"] $ws3
 assign [app_id="telegramdesktop"] $ws3
-assign [class="BlueMail"] $ws5
 assign [class="ticktick"] $ws5
+for_window [class="Thunderbird"] move to workspace $ws5
 for_window [class="Spotify"] move to workspace $ws6
 exec slack
 exec firefox
 exec spotify
 exec com.ticktick.TickTick
+exec com.ulduzsoft.Birdtray
 exec telegram-desktop
-exec bluemail
 
 exec swaymsg "workspace $ws5; layout tabbed; workspace $ws1"
 

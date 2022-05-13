@@ -1,38 +1,33 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar at the bottom of your screen
-    "height": 24, // Waybar height
-    // "width": 1366, // Waybar width
-    // Choose the order of the modules
+    "height": 30,
+    "spacing": 4,
     "modules-left": [
         "sway/workspaces",
-        "sway/mode",
         "custom/scratchpad-indicator",
-        "custom/spotify"
+        "custom/spotify",
+        "sway/mode"
     ],
-    // "modules-center": ["sway/window"],
+    "modules-center": ["clock"],
     "modules-right": [
-        "sway/language",
+        "tray",
         "pulseaudio",
         "network",
         "backlight",
-        "battery",
         "cpu",
         "memory",
-        "tray",
+        "custom/pacman",
         "idle_inhibitor",
-        "custom/dunst",
-        "clock"
+        "custom/dnd",
+        "sway/language",
+        "battery"
     ],
+
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
-        "format": "{icon} {name}",
-        // "format": "{name}: {icon}",
+         "format": "{icon} {name}",
         "format-icons": {
-            //"0: General": "",
-            "1:web": "", 
-            "2:code": "",
+            "1:web": "",
             "2:code": "",
             "3:chat": "",
             "4:term": "",
@@ -46,16 +41,33 @@
         }
     },
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        "format": "{}"
     },
-    "tray": {
-        "icon-size": 16,
-        "spacing": 10,
-        "show-passive-items" : false
+    "custom/scratchpad-indicator": {
+        "interval": 3,
+        "return-type": "json",
+        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? + .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\") | join(\"\\n\") } else empty end'",
+        "format": " {}",
+        "on-click": "exec swaymsg 'scratchpad show'",
+        "on-click-right": "exec swaymsg 'move scratchpad'"
     },
+    "custom/spotify": {
+        "exec-if": "pgrep spotify",
+        "exec": "/usr/bin/python3 $HOME/.config/waybar/modules/mediaplayer.py --player spotify",
+        "format": " {}",
+        "max-length": 20,
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "killall spotify",
+        "on-click-middle": "playerctl next"
+        // "on-scroll-up": "playerctl next",
+        // "on-scroll-down": "playerctl previous"
+    },
+
     "clock": {
         "timezone": "Europe/Kiev",
-        "format": " {:%b %d %Y (%R)}",
+        // "format": "{:%b %d %Y (%R)}",
+        "format": "{:%b %d %R}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><span>{calendar}</span></tt>",
         "format-alt": "{:%Y-%m-%d}",
         "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
@@ -65,52 +77,18 @@
         "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>",
         "interval": 10
     },
-    "cpu": {
-        "format": " {usage}%"
-    },
-    "memory": {
-        "format": " {}%"
-    },
-    "battery": {
-        "states": {
-            "perfect": 100,
-            "good": 95,
-            "warning": 30,
-            "critical": 10
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        "format-perfect": "",
-        "format-good": "",
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": " {essid}",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-disconnected": "⚠ Disconnected",
-        "tooltip-format": " {ifname} via {gwaddr}",
-        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": " {ifname}",
-        "tooltip-format-disconnected": "Disconnected",
-        "on-click": "swaymsg exec '$term -e nmtui-connect'"
+
+    "tray": {
+        "spacing": 10
     },
     "pulseaudio": {
-        //"scroll-step": 1,
-        //"format": "{icon} {volume}%",
-        //"format-bluetooth": " {icon} {volume}%",
-
+        "scroll-step": 5,
         "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": "{icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {volume}% {format_source}",
         "format-muted": " {format_source}",
         "format-source": "",
         "format-source-muted": "",
-
-
         "format-icons": {
             "headphones": "",
             "handsfree": "",
@@ -126,48 +104,86 @@
         // "tooltip-format": "{desc}, {volume}%", // Uncomment for more info
         "tooltip": false
     },
-    "custom/spotify": {
-        "exec-if": "pgrep spotify",
-        "exec": "/usr/bin/python3 $HOME/.config/waybar/modules/mediaplayer.py --player spotify",
-        // "interval": 5, // Remove this if your script is endless and write in loop
-        "format": " {}",
-        "max-length": 30,
-        "return-type": "json",
-        "on-click": "playerctl play-pause",
-        "on-click-right": "killall spotify"
-        // "on-scroll-up": "playerctl next",
-        // "on-scroll-down": "playerctl previous"
+    "network": {
+        "format-wifi": "{essid} ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{bandwidthUpBits}  {bandwidthDownBits}  ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "on-click-right": "swaymsg exec '$term -e nmtui-connect'"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "memory": {
+        "format": "{}% "
     },
     "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", ""],
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", ""],
         "on-scroll-up" : "light -A 5",
         "on-scroll-down" : "light -U 5"
     },
-    "sway/language": {
-        "format": "{short}",
-        "tooltip": false
-    },
-    "custom/dunst": {
-        "exec": "~/.config/waybar/modules/dunst.sh",
-        "on-click": "dunstctl set-paused toggle",
-        "restart-interval": 1,
-        "tooltip": false
+    "custom/pacman": {
+        "format": "{} ",
+        "interval": 3600,
+        "exec": "~/.config/waybar/modules/pacman.sh",
+        "exec-if": "exit 0",
+        "return-type": "json",
+        "tooltip": false,
+        "on-click": "kitty pacman -Syu; pkill -SIGRTMIN+8 waybar",
+        "signal": 8
     },
     "idle_inhibitor": {
-       "format": "{icon}",
-       "format-icons": {
+        "format": "{icon}",
+        "format-icons": {
             "activated": "",
             "deactivated": ""
-        }
+        },
+        "tooltip": false
     },
-    "custom/scratchpad-indicator": {
-        "interval": 3,
+
+//    "custom/dnd": {
+//        "format": "1 {status} ",
+//        "exec": "~/.config/waybar/modules/dnd.sh",
+//        "return-type": "json",
+//        "on-click": "dunstctl set-paused toggle",
+//        "tooltip": false,
+//        "signal": 8
+//    },
+
+    "custom/dnd": {
+        "format": "{}",
+//        "format": "{percentage} ",
+        "interval": 3600,
+        "exec": "~/.config/waybar/modules/dnd.sh",
+        "exec-if": "exit 0",
         "return-type": "json",
-        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? + .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\") | join(\"\\n\") } else empty end'",
-        "format": " {}",
-        "on-click": "exec swaymsg 'scratchpad show'",
-        "on-click-right": "exec swaymsg 'move scratchpad'"
+        "tooltip": false,
+        "on-click": "dunstctl set-paused toggle",
+        "signal": 8
+    },
+    "sway/language": {
+        "format": "{shortDescription}",
+        // https://github.com/swaywm/sway/issues/6011#issuecomment-812509175
+        "on-click": "swaymsg -t get_inputs -r | jq '[.[] | select(.type == \"keyboard\") | .xkb_active_layout_index][0] - 1 | fabs' | xargs swaymsg 'input type:keyboard xkb_switch_layout'",
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            "full": 100,
+            "good": 95,
+            "warning": 30,
+            "critical": 10
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-full": "",
+        "format-good": "",
+        "format-icons": ["", "", "", "", ""]
     }
 }

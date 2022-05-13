@@ -14,6 +14,12 @@ ln -sf "$path"/dep.txt "$HOME"/dep.txt
 # Config directory
 [ ! -d "$HOME"/.config ] && mkdir "$HOME"/.config
 
+[ -d "$HOME"/.config/dunst ] && rm -rf "$HOME"/.config/dunst
+ln -sf "$path"/config/dunst/ "$HOME"/.config/dunst
+
+[ -d "$HOME"/.config/fontconfig ] && rm -rf "$HOME"/.config/fontconfig
+ln -sf "$path"/config/fontconfig/ "$HOME"/.config/fontconfig
+
 [ -d "$HOME"/.config/sway ] && rm -rf "$HOME"/.config/sway
 ln -sf "$path"/config/sway/ "$HOME"/.config/sway
 
@@ -24,7 +30,6 @@ ln -sf "$path"/config/swaylock/ "$HOME"/.config/swaylock
 ln -sf "$path"/config/waybar/ "$HOME"/.config/waybar
 chmod -R +x "$HOME"/.config/waybar/modules/
 
-ln -sf "$path"/config/mimeapps.list "$HOME"/.config/mimeapps.list
 ln -sf "$path"/config/pavucontrol.ini "$HOME"/.config/pavucontrol.ini
 
 # Local directory
@@ -34,3 +39,6 @@ ln -sf "$path"/config/pavucontrol.ini "$HOME"/.config/pavucontrol.ini
 #ln -sf "$path"/.local/share/applications "$HOME"/.local/share/applications
 [ -d "$HOME"/.local/share/fonts ] && rm -r "$HOME"/.local/share/fonts
 ln -sf "$path"/local/share/fonts "$HOME"/.local/share/fonts
+
+[ -d "$HOME"/.local/share/wallpapers ] && rm -r "$HOME"/.local/share/wallpapers
+ln -sf "$path"/local/share/wallpapers "$HOME"/.local/share/wallpapers
