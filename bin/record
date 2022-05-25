@@ -1,0 +1,14 @@
+#!/bin/bash
+
+pid=`pgrep wf-recorder`
+status=$?
+
+if [ $status != 0 ]
+
+then
+	notify-send "Recording Started"
+  wf-recorder -f $HOME/Videos/$(date +'recording_%Y-%m-%d-%H%M%S.mp4');
+else
+  pkill --signal SIGINT wf-recorder
+	notify-send "Recording Complete"
+fi;

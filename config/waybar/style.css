@@ -2,14 +2,13 @@
 * {
     border: none;
     border-radius: 5px;
-    font-family: "JetBrains Mono";
+    font-family: "Fira Code Medium";
     /*font-family: "Font Awesome 6 Free Regular";*/
     /*font-family: "Cascadia Mono", "NotoSans Nerd Font";*/
     font-size: 13px;
     min-height: 0;
     margin: 3px 3px 0;
 }
-
 window#waybar {
     background-color: rgba(0, 0, 0, 0);
     color: rgba(0, 0, 0, 0);
@@ -187,4 +186,10 @@ label:focus {
     background-color: #eb4d4b;
     color: #f5f5f5;
     font-weight: bold;
+}
+
+#custom-recorder {
+    font-weight: bold;
+    font-size: 16px;
+    color:#c9545d;
 }

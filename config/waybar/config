@@ -7,7 +7,7 @@
         "custom/spotify",
         "sway/mode"
     ],
-    "modules-center": ["clock"],
+    "modules-center": ["clock", "custom/recorder"],
     "modules-right": [
         "tray",
         "pulseaudio",
@@ -58,8 +58,8 @@
         "max-length": 20,
         "return-type": "json",
         "on-click": "playerctl play-pause",
-        "on-click-right": "killall spotify",
-        "on-click-middle": "playerctl next"
+        "on-click-right": "playerctl next"
+        // "on-click-middle": "killall spotify",
         // "on-scroll-up": "playerctl next",
         // "on-scroll-down": "playerctl previous"
     },
@@ -77,6 +77,23 @@
         "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>",
         "interval": 10
     },
+    "custom/recorder": {
+        "format": "",
+        "return-type": "json",
+        "interval": 1,
+        "exec": "echo '{\"class\": \"recording\"}'",
+        "exec-if": "pgrep wf-recorder",
+        "on-click": "exec ~/.bin/record"
+    },
+    //    "custom/wf-recorder": {
+//		"format": "{}",
+//		"interval": "once",
+//		"exec": "echo ''",
+//		"tooltip": "false",
+//		"exec-if": "pgrep 'wf-recorder'",
+//		"on-click": "exec ~/.bin/record",
+//		"signal": 8
+//	},
 
     "tray": {
         "spacing": 10
@@ -98,7 +115,7 @@
             "car": "",
             "default": ["", ""]
         },
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click": "~/.config/waybar/modules/volume.sh mute",
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-click-middle": "pavucontrol",
         // "tooltip-format": "{desc}, {volume}%", // Uncomment for more info
@@ -114,17 +131,19 @@
         "tooltip-format-ethernet": "{ifname} ",
         "on-click-right": "swaymsg exec '$term -e nmtui-connect'"
     },
-    "cpu": {
-        "format": "{usage}% "
-    },
-    "memory": {
-        "format": "{}% "
-    },
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": ["", "", ""],
-        "on-scroll-up" : "light -A 5",
-        "on-scroll-down" : "light -U 5"
+        "on-scroll-up" : "~/.config/waybar/modules/brightness.sh up",
+        "on-scroll-down" : "~/.config/waybar/modules/brightness.sh down"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "on-click": "kitty htop"
+    },
+    "memory": {
+        "format": "{}% ",
+        "on-click": "kitty htop"
     },
     "custom/pacman": {
         "format": "{} ",
@@ -133,7 +152,7 @@
         "exec-if": "exit 0",
         "return-type": "json",
         "tooltip": false,
-        "on-click": "kitty pacman -Syu; pkill -SIGRTMIN+8 waybar",
+        "on-click": "kitty sudo pacman -Syu; pkill -SIGRTMIN+8 waybar",
         "signal": 8
     },
     "idle_inhibitor": {
@@ -144,16 +163,6 @@
         },
         "tooltip": false
     },
-
-//    "custom/dnd": {
-//        "format": "1 {status} ",
-//        "exec": "~/.config/waybar/modules/dnd.sh",
-//        "return-type": "json",
-//        "on-click": "dunstctl set-paused toggle",
-//        "tooltip": false,
-//        "signal": 8
-//    },
-
     "custom/dnd": {
         "format": "{}",
 //        "format": "{percentage} ",
@@ -174,7 +183,7 @@
     "battery": {
         "states": {
             "full": 100,
-            "good": 95,
+            "good": 75,
             "warning": 30,
             "critical": 10
         },
@@ -183,7 +192,7 @@
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-full": "",
-        "format-good": "",
+        // "format-good": "",
         "format-icons": ["", "", "", "", ""]
     }
 }

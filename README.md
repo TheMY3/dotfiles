@@ -3,9 +3,11 @@
 ### Pacman
 - ????? - noto-fonts-emoji ttf-fira-code
 - pacman-contrib
+- wl-clipboard
 - fontconfig
 - man
 - wget
+- thunar
 - ranger
 - flatpak
 - thunderbird
@@ -19,7 +21,11 @@
 - pavucontrol
 - gtk2
 - pcsclite
-- grim slurp swappy imv
+- wf-recorder
+- grim
+- slurp
+- swappy
+- imv
 - vim neovim
 - powerline powerline-fonts
 - npm yarn
@@ -36,6 +42,7 @@
 - php php-intl php-sqlite xdebug composer
 
 ### AUR
+- clipman
 - 1password
 - sublime-text-4
 - polkit
@@ -46,6 +53,7 @@
 - slack-desktop
 - google-chrome
 - twitch-cli-bin
+- swaync
 - pamac-aur (optional)
 
 ### Flatpak

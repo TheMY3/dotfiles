@@ -8,6 +8,11 @@ ln -sf "$path"/.gitconfig "$HOME"/.gitconfig
 ln -sf "$path"/.ideavimrc "$HOME"/.ideavimrc
 ln -sf "$path"/.vimrc "$HOME"/.vimrc
 ln -sf "$path"/.zshrc "$HOME"/.zshrc
+
+[ -d "$HOME"/.bin ] && rm -rf "$HOME"/.bin
+ln -sf "$path"/bin/ "$HOME"/.bin
+chmod -R +x "$HOME"/.bin/
+
 # Remove later
 ln -sf "$path"/dep.txt "$HOME"/dep.txt
 
@@ -20,6 +25,9 @@ ln -sf "$path"/config/dunst/ "$HOME"/.config/dunst
 [ -d "$HOME"/.config/fontconfig ] && rm -rf "$HOME"/.config/fontconfig
 ln -sf "$path"/config/fontconfig/ "$HOME"/.config/fontconfig
 
+[ -d "$HOME"/.config/kitty ] && rm -rf "$HOME"/.config/kitty
+ln -sf "$path"/config/kitty/ "$HOME"/.config/kitty
+
 [ -d "$HOME"/.config/sway ] && rm -rf "$HOME"/.config/sway
 ln -sf "$path"/config/sway/ "$HOME"/.config/sway
 
@@ -29,6 +37,9 @@ ln -sf "$path"/config/swaylock/ "$HOME"/.config/swaylock
 [ -d "$HOME"/.config/waybar ] && rm -rf "$HOME"/.config/waybar
 ln -sf "$path"/config/waybar/ "$HOME"/.config/waybar
 chmod -R +x "$HOME"/.config/waybar/modules/
+
+[ -d "$HOME"/.config/wofi ] && rm -rf "$HOME"/.config/wofi
+ln -sf "$path"/config/wofi/ "$HOME"/.config/wofi
 
 ln -sf "$path"/config/pavucontrol.ini "$HOME"/.config/pavucontrol.ini
 
