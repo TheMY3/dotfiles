@@ -13,9 +13,6 @@ ln -sf "$path"/.zshrc "$HOME"/.zshrc
 ln -sf "$path"/bin/ "$HOME"/.bin
 chmod -R +x "$HOME"/.bin/
 
-# Remove later
-ln -sf "$path"/dep.txt "$HOME"/dep.txt
-
 # Config directory
 [ ! -d "$HOME"/.config ] && mkdir "$HOME"/.config
 
@@ -25,11 +22,17 @@ ln -sf "$path"/config/dunst/ "$HOME"/.config/dunst
 [ -d "$HOME"/.config/fontconfig ] && rm -rf "$HOME"/.config/fontconfig
 ln -sf "$path"/config/fontconfig/ "$HOME"/.config/fontconfig
 
+[ -d "$HOME"/.config/gtk-3.0 ] && rm -rf "$HOME"/.config/gtk-3.0
+ln -sf "$path"/config/gtk-3.0/ "$HOME"/.config/gtk-3.0
+
 [ -d "$HOME"/.config/kitty ] && rm -rf "$HOME"/.config/kitty
 ln -sf "$path"/config/kitty/ "$HOME"/.config/kitty
 
 [ -d "$HOME"/.config/sway ] && rm -rf "$HOME"/.config/sway
 ln -sf "$path"/config/sway/ "$HOME"/.config/sway
+
+[ -d "$HOME"/.config/swaync ] && rm -rf "$HOME"/.config/swaync
+ln -sf "$path"/config/swaync/ "$HOME"/.config/swaync
 
 [ -d "$HOME"/.config/swaylock ] && rm -rf "$HOME"/.config/swaylock
 ln -sf "$path"/config/swaylock/ "$HOME"/.config/swaylock
@@ -50,6 +53,11 @@ ln -sf "$path"/config/pavucontrol.ini "$HOME"/.config/pavucontrol.ini
 #ln -sf "$path"/.local/share/applications "$HOME"/.local/share/applications
 [ -d "$HOME"/.local/share/fonts ] && rm -r "$HOME"/.local/share/fonts
 ln -sf "$path"/local/share/fonts "$HOME"/.local/share/fonts
+[ -d "$HOME"/.local/share/icons ] && rm -r "$HOME"/.local/share/icons
+ln -sf "$path"/local/share/icons "$HOME"/.local/share/icons
+[ -d "$HOME"/.local/share/themes ] && rm -r "$HOME"/.local/share/themes
+ln -sf "$path"/local/share/themes "$HOME"/.local/share/themes
+
 
 [ -d "$HOME"/.local/share/wallpapers ] && rm -r "$HOME"/.local/share/wallpapers
 ln -sf "$path"/local/share/wallpapers "$HOME"/.local/share/wallpapers

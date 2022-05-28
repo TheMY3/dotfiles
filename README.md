@@ -1,8 +1,9 @@
 ## Installed packages
 
 ### Pacman
-- ????? - noto-fonts-emoji ttf-fira-code
 - pacman-contrib
+- unzip zip tar
+- httpie
 - wl-clipboard
 - fontconfig
 - man
@@ -40,6 +41,7 @@
 - terraform
 - python-gobject playerctl
 - php php-intl php-sqlite xdebug composer
+- polkit-gnome
 
 ### AUR
 - clipman
@@ -47,6 +49,7 @@
 - sublime-text-4
 - polkit
 - phpstorm
+- postman-bin
 - dropbox
 - beekeeper-studio-bin
 - lens-bin
@@ -63,6 +66,14 @@
 
 ## Some hints
 
+##### Howdy config
+```shell
+device_path="/dev/video2"
+dark_threshold = 90
+certainty = 4
+timeout = 5
+```
+
 ##### Suspend on Power-off button
 ```shell
 nvim /etc/systemd/logind.conf
@@ -76,3 +87,23 @@ HandlePowerKey=suspend
 ```shell
 fc-cache -f
 ```
+
+##### [Notification Control Center Shortcuts](https://github.com/ErikReider/SwayNotificationCenter#control-center-shortcuts)
+```
+Up/Down: Navigate notifications
+Home: Navigate to the latest notification
+End: Navigate to the oldest notification
+Escape/Caps_Lock: Close notification panel
+Return: Execute default action or close notification if none
+Delete/BackSpace: Close notification
+Shift+C: Close all notifications
+Shift+D: Toggle Do Not Disturb
+Buttons 1-9: Execute alternative actions
+Left click button / actions: Activate notification action
+Right click notification: Close notification
+```
+
+## Useful links
+
+- https://www.fosskers.ca/en/blog/wayland
+- https://shibumi.dev/posts/my-way-to-wayland/

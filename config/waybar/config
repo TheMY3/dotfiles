@@ -17,7 +17,7 @@
         "memory",
         "custom/pacman",
         "idle_inhibitor",
-        "custom/dnd",
+        "custom/notification",
         "sway/language",
         "battery"
     ],
@@ -44,12 +44,11 @@
         "format": "{}"
     },
     "custom/scratchpad-indicator": {
-        "interval": 3,
         "return-type": "json",
-        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? + .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\") | join(\"\\n\") } else empty end'",
+        "exec": "~/.config/waybar/modules/scratchpad-indicator.sh",
         "format": " {}",
-        "on-click": "exec swaymsg 'scratchpad show'",
-        "on-click-right": "exec swaymsg 'move scratchpad'"
+        "on-click": "swaymsg 'scratchpad show'",
+        "on-click-right": "swaymsg 'move scratchpad'"
     },
     "custom/spotify": {
         "exec-if": "pgrep spotify",
@@ -152,7 +151,7 @@
         "exec-if": "exit 0",
         "return-type": "json",
         "tooltip": false,
-        "on-click": "kitty sudo pacman -Syu; pkill -SIGRTMIN+8 waybar",
+        "on-click": "pamac-manager",
         "signal": 8
     },
     "idle_inhibitor": {
@@ -174,6 +173,22 @@
         "on-click": "dunstctl set-paused toggle",
         "signal": 8
     },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup>\uF111</sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup>\uF111</sup></span>",
+          "dnd-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+      },
     "sway/language": {
         "format": "{shortDescription}",
         // https://github.com/swaywm/sway/issues/6011#issuecomment-812509175

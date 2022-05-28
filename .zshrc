@@ -121,6 +121,8 @@ export AUTO_NOTIFY_IGNORE=("docker" "dcup" "man" "sleep" "gd" "nvim" "vim" "rang
 
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$(yarn global bin):$PATH"
+# HOWDY fix - https://github.com/boltgolt/howdy/issues/241#issuecomment-532149332
+# export OPENCV_LOG_LEVEL=ERROR
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -143,3 +145,4 @@ export PATH="$(yarn global bin):$PATH"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias s="sway-run"

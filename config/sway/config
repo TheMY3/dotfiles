@@ -41,6 +41,7 @@ output HDMI-A-1 resolution 1920x1080 position 1920,0
 
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
+         timeout 100 'swaymsg input "*" xkb_switch_layout 0' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 
@@ -233,7 +234,15 @@ bar {
 seat * hide_cursor 5000
 # seat * hide_cursor when-typing enable
 
-exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
+# https://www.fosskers.ca/en/blog/wayland
+exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always ~/.bin/import-gsettings
+# exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
+# Notification Daemon
+exec swaync
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 exec udiskie
@@ -244,11 +253,22 @@ exec udiskie
 for_window    [app_id=".*"]                              sticky enable
 for_window    [window_role="pop-up"]                     floating enable
 for_window    [app_id="udiskie"]                         floating enable
+for_window    [class="1Password"]                        floating enable
+
+# Generated windows. (https://www.reddit.com/r/swaywm/comments/uwdboi/how_to_make_chrome_popup_windows_floating/)
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 800 600
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 
 # Default workspaces for common programs
 assign [class="^Firefox$"] $ws1
 assign [class="Slack"] $ws3
-assign [app_id="telegramdesktop"] $ws3
+assign [class="TelegramDesktop"] $ws3
 assign [class="ticktick"] $ws5
 for_window [class="Thunderbird"] move to workspace $ws5
 for_window [class="Spotify"] move to workspace $ws6
