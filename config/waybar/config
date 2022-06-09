@@ -7,7 +7,11 @@
         "custom/spotify",
         "sway/mode"
     ],
-    "modules-center": ["clock", "custom/recorder"],
+    "modules-center": [
+        "clock",
+        "custom/weather",
+        "custom/recorder"
+    ],
     "modules-right": [
         "tray",
         "pulseaudio",
@@ -58,42 +62,58 @@
         "return-type": "json",
         "on-click": "playerctl play-pause",
         "on-click-right": "playerctl next"
-        // "on-click-middle": "killall spotify",
-        // "on-scroll-up": "playerctl next",
-        // "on-scroll-down": "playerctl previous"
     },
 
     "clock": {
         "timezone": "Europe/Kiev",
-        // "format": "{:%b %d %Y (%R)}",
         "format": "{:%b %d %R}",
+        "locale": "ru_RU.UTF-8",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><span>{calendar}</span></tt>",
         "format-alt": "{:%Y-%m-%d}",
         "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
-        "calendar-weeks-pos": "left",
         "format-calendar": "<span color='#ecc6d9'><b>{}</b></span>",
         "format-calendar-weeks": "<span color='#99ffdd'><b>{}</b></span>",
         "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>",
         "interval": 10
     },
+    "custom/weather": {
+        "icon-size": 42,
+        "format": "{icon} {}",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "~/.config/waybar/modules/weather.py",
+        "return-type": "json",
+        "format-icons": {
+            "Unknown": "✨",
+            "Cloudy": "",
+            "Fog": "🌫",
+            "HeavyRain": "🌧",
+            "HeavyShowers": "🌧",
+            "HeavySnow": "❄️",
+            "HeavySnowShowers": "❄️",
+            "LightRain": "🌦",
+            "LightShowers": "🌦",
+            "LightSleet": "🌧",
+            "LightSleetShowers": "🌧",
+            "LightSnow": "🌨",
+            "LightSnowShowers": "🌨",
+            "PartlyCloudy": "⛅️",
+            "Sunny": "☀️",
+            "ThunderyHeavyRain": "🌩",
+            "ThunderyShowers": "⛈",
+            "ThunderySnowShowers": "⛈",
+            "VeryCloudy": ""
+        }
+    },
     "custom/recorder": {
-        "format": "",
+        "format": "{}",
+        "tooltip-format": "{tooltip}",
         "return-type": "json",
         "interval": 1,
-        "exec": "echo '{\"class\": \"recording\"}'",
+        "exec": "echo '{\"class\": \"recording\",\"text\":\"\",\"tooltip\":\"press $mod+Esc to stop recording\"}'",
         "exec-if": "pgrep wf-recorder",
-        "on-click": "exec ~/.bin/record"
+        "on-click": "swaymsg exec \\$recorder"
     },
-    //    "custom/wf-recorder": {
-//		"format": "{}",
-//		"interval": "once",
-//		"exec": "echo ''",
-//		"tooltip": "false",
-//		"exec-if": "pgrep 'wf-recorder'",
-//		"on-click": "exec ~/.bin/record",
-//		"signal": 8
-//	},
-
     "tray": {
         "spacing": 10
     },
@@ -114,7 +134,7 @@
             "car": "",
             "default": ["", ""]
         },
-        "on-click": "~/.config/waybar/modules/volume.sh mute",
+        "on-click": "swaymsg exec \\$volume_mute",
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-click-middle": "pavucontrol",
         // "tooltip-format": "{desc}, {volume}%", // Uncomment for more info
@@ -128,21 +148,21 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
         "tooltip-format-ethernet": "{ifname} ",
-        "on-click-right": "swaymsg exec '$term -e nmtui-connect'"
+        "on-click-right": "swaymsg exec '$term_float -e nmtui-connect'"
     },
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": ["", "", ""],
-        "on-scroll-up" : "~/.config/waybar/modules/brightness.sh up",
-        "on-scroll-down" : "~/.config/waybar/modules/brightness.sh down"
+        "on-scroll-up" : "swaymsg exec \\$brightness_up",
+        "on-scroll-down" : "swaymsg exec \\$brightness_down"
     },
     "cpu": {
         "format": "{usage}% ",
-        "on-click": "kitty htop"
+        "on-click": "swaymsg exec '$term_float -e htop"
     },
     "memory": {
         "format": "{}% ",
-        "on-click": "kitty htop"
+        "on-click": "swaymsg exec '$term_float -e htop'"
     },
     "custom/pacman": {
         "format": "{} ",
@@ -164,7 +184,6 @@
     },
     "custom/dnd": {
         "format": "{}",
-//        "format": "{percentage} ",
         "interval": 3600,
         "exec": "~/.config/waybar/modules/dnd.sh",
         "exec-if": "exit 0",

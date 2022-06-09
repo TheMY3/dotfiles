@@ -9,10 +9,6 @@ ln -sf "$path"/.ideavimrc "$HOME"/.ideavimrc
 ln -sf "$path"/.vimrc "$HOME"/.vimrc
 ln -sf "$path"/.zshrc "$HOME"/.zshrc
 
-[ -d "$HOME"/.bin ] && rm -rf "$HOME"/.bin
-ln -sf "$path"/bin/ "$HOME"/.bin
-chmod -R +x "$HOME"/.bin/
-
 # Config directory
 [ ! -d "$HOME"/.config ] && mkdir "$HOME"/.config
 
@@ -28,8 +24,12 @@ ln -sf "$path"/config/gtk-3.0/ "$HOME"/.config/gtk-3.0
 [ -d "$HOME"/.config/kitty ] && rm -rf "$HOME"/.config/kitty
 ln -sf "$path"/config/kitty/ "$HOME"/.config/kitty
 
+[ -d "$HOME"/.config/ranger ] && rm -rf "$HOME"/.config/ranger
+ln -sf "$path"/config/ranger/ "$HOME"/.config/ranger
+
 [ -d "$HOME"/.config/sway ] && rm -rf "$HOME"/.config/sway
 ln -sf "$path"/config/sway/ "$HOME"/.config/sway
+chmod -R +x "$HOME"/.config/sway/scripts/
 
 [ -d "$HOME"/.config/swaync ] && rm -rf "$HOME"/.config/swaync
 ln -sf "$path"/config/swaync/ "$HOME"/.config/swaync
@@ -44,13 +44,16 @@ chmod -R +x "$HOME"/.config/waybar/modules/
 [ -d "$HOME"/.config/wofi ] && rm -rf "$HOME"/.config/wofi
 ln -sf "$path"/config/wofi/ "$HOME"/.config/wofi
 
+[ -d "$HOME"/.config/zathura ] && rm -rf "$HOME"/.config/zathura
+ln -sf "$path"/config/zathura/ "$HOME"/.config/zathura
+
+ln -sf "$path"/config/.gtkrc-2.0 "$HOME"/.config/.gtkrc-2.0
 ln -sf "$path"/config/pavucontrol.ini "$HOME"/.config/pavucontrol.ini
+ln -sf "$path"/config/user-dirs.dirs "$HOME"/.config/user-dirs.dirs
 
 # Local directory
 [ ! -d "$HOME"/.local ] && mkdir -p "$HOME"/.local/share
 [ ! -d "$HOME"/.local/share ] && mkdir "$HOME"/.local/share
-#[ -d "$HOME"/.local/share/applications ] && rm -rf "$HOME"/.local/share/applications
-#ln -sf "$path"/.local/share/applications "$HOME"/.local/share/applications
 [ -d "$HOME"/.local/share/fonts ] && rm -r "$HOME"/.local/share/fonts
 ln -sf "$path"/local/share/fonts "$HOME"/.local/share/fonts
 [ -d "$HOME"/.local/share/icons ] && rm -r "$HOME"/.local/share/icons

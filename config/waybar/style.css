@@ -7,7 +7,7 @@
     /*font-family: "Cascadia Mono", "NotoSans Nerd Font";*/
     font-size: 13px;
     min-height: 0;
-    margin: 3px 3px 0;
+    margin: 3px 3px 3px 3px;
 }
 window#waybar {
     background-color: rgba(0, 0, 0, 0);
@@ -80,6 +80,7 @@ window#waybar.solo {
 #custom-notification,
 #custom-pacman,
 #custom-scratchpad-indicator,
+#custom-weather,
 #custom-spotify,
 #language {
     padding: 0 10px;

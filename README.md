@@ -1,19 +1,21 @@
-## Installed packages
+## Installed packages (not all)
 
 ### Pacman
 - pacman-contrib
 - unzip zip tar
 - httpie
+- xdg-user-dirs
 - wl-clipboard
 - fontconfig
 - man
 - wget
 - thunar
+- file-roller
 - ranger
 - flatpak
 - thunderbird
 - pulseaudio-bluetooth bluez bluez-utils blueman
-- alacritty kitty
+- kitty
 - zsh zsh-history-substring-search zsh-syntax-highlighting
 - udisks2 udiskie
 - rsync
@@ -26,7 +28,11 @@
 - grim
 - slurp
 - swappy
-- imv
+- swayimg
+- zathura
+- zathura-pdf-mupdf
+- zathura-djvu
+- mpv
 - vim neovim
 - powerline powerline-fonts
 - npm yarn
@@ -38,13 +44,17 @@
 - github-cli
 - docker docker-compose
 - ansible
+- kubectl
+- helm
 - terraform
 - python-gobject playerctl
 - php php-intl php-sqlite xdebug composer
 - polkit-gnome
 
 ### AUR
-- clipman
+- cliphist
+- swaync
+- wob
 - 1password
 - sublime-text-4
 - polkit
@@ -56,8 +66,7 @@
 - slack-desktop
 - google-chrome
 - twitch-cli-bin
-- swaync
-- pamac-aur (optional)
+- binance
 
 ### Flatpak
 - ticktick

@@ -118,7 +118,6 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export AUTO_NOTIFY_IGNORE=("docker" "dcup" "man" "sleep" "gd" "nvim" "vim" "ranger")
-
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$(yarn global bin):$PATH"
 # HOWDY fix - https://github.com/boltgolt/howdy/issues/241#issuecomment-532149332
@@ -146,3 +145,5 @@ export PATH="$(yarn global bin):$PATH"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias s="sway-run"
+
+bindkey '^ ' autosuggest-accept
