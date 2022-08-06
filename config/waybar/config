@@ -17,8 +17,9 @@
         "pulseaudio",
         "network",
         "backlight",
-        "cpu",
-        "memory",
+//        "cpu",
+//        "memory",
+//        "temperature",
         "custom/pacman",
         "idle_inhibitor",
         "custom/notification",
@@ -37,7 +38,6 @@
             "4:term": "",
             "5:apps": "",
             "6:music": "",
-            //"6:docs": "",
             "urgent": "",
             "focused": "",
             "default": "",
@@ -63,7 +63,6 @@
         "on-click": "playerctl play-pause",
         "on-click-right": "playerctl next"
     },
-
     "clock": {
         "timezone": "Europe/Kiev",
         "format": "{:%b %d %R}",
@@ -163,6 +162,13 @@
     "memory": {
         "format": "{}% ",
         "on-click": "swaymsg exec '$term_float -e htop'"
+    },
+     "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        // "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
     },
     "custom/pacman": {
         "format": "{} ",

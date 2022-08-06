@@ -2,10 +2,12 @@
 
 ### Pacman
 - pacman-contrib
+- polkit-gnome
 - unzip zip tar
 - httpie
 - xdg-user-dirs
 - wl-clipboard
+- wofi
 - fontconfig
 - man
 - wget
@@ -13,7 +15,6 @@
 - file-roller
 - ranger
 - flatpak
-- thunderbird
 - pulseaudio-bluetooth bluez bluez-utils blueman
 - kitty
 - zsh zsh-history-substring-search zsh-syntax-highlighting
@@ -49,7 +50,6 @@
 - terraform
 - python-gobject playerctl
 - php php-intl php-sqlite xdebug composer
-- polkit-gnome
 
 ### AUR
 - cliphist
@@ -65,12 +65,13 @@
 - lens-bin
 - slack-desktop
 - google-chrome
+- galculator
 - twitch-cli-bin
 - binance
 
 ### Flatpak
 - ticktick
-- birdtray
+- mailspring
 
 
 ## Some hints

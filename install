@@ -1,6 +1,10 @@
 #!/bin/sh
 path=$(pwd)
 
+
+ln -sf "$path"/sway-run /usr/local/bin/sway-run
+ln -sf "$path"/wayland_enablement.sh /usr/local/bin/wayland_enablement.sh
+
 # Home directory
 ln -sf "$path"/.bash_profile "$HOME"/.bash_profile
 ln -sf "$path"/.bashrc "$HOME"/.bashr
@@ -17,6 +21,9 @@ ln -sf "$path"/config/dunst/ "$HOME"/.config/dunst
 
 [ -d "$HOME"/.config/fontconfig ] && rm -rf "$HOME"/.config/fontconfig
 ln -sf "$path"/config/fontconfig/ "$HOME"/.config/fontconfig
+
+[ -d "$HOME"/.config/i3 ] && rm -rf "$HOME"/.config/i3
+ln -sf "$path"/config/i3/ "$HOME"/.config/i3
 
 [ -d "$HOME"/.config/gtk-3.0 ] && rm -rf "$HOME"/.config/gtk-3.0
 ln -sf "$path"/config/gtk-3.0/ "$HOME"/.config/gtk-3.0
@@ -60,7 +67,6 @@ ln -sf "$path"/local/share/fonts "$HOME"/.local/share/fonts
 ln -sf "$path"/local/share/icons "$HOME"/.local/share/icons
 [ -d "$HOME"/.local/share/themes ] && rm -r "$HOME"/.local/share/themes
 ln -sf "$path"/local/share/themes "$HOME"/.local/share/themes
-
 
 [ -d "$HOME"/.local/share/wallpapers ] && rm -r "$HOME"/.local/share/wallpapers
 ln -sf "$path"/local/share/wallpapers "$HOME"/.local/share/wallpapers
