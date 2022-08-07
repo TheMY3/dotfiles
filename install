@@ -16,6 +16,9 @@ ln -sf "$path"/.zshrc "$HOME"/.zshrc
 # Config directory
 [ ! -d "$HOME"/.config ] && mkdir "$HOME"/.config
 
+[ -d "$HOME"/.config/bumblebee-status ] && rm -rf "$HOME"/.config/bumblebee-status
+ln -sf "$path"/config/bumblebee-status/ "$HOME"/.config/bumblebee-status
+
 [ -d "$HOME"/.config/dunst ] && rm -rf "$HOME"/.config/dunst
 ln -sf "$path"/config/dunst/ "$HOME"/.config/dunst
 
@@ -30,6 +33,9 @@ ln -sf "$path"/config/gtk-3.0/ "$HOME"/.config/gtk-3.0
 
 [ -d "$HOME"/.config/kitty ] && rm -rf "$HOME"/.config/kitty
 ln -sf "$path"/config/kitty/ "$HOME"/.config/kitty
+
+[ -d "$HOME"/.config/polybar ] && rm -rf "$HOME"/.config/polybar
+ln -sf "$path"/config/polybar/ "$HOME"/.config/polybar
 
 [ -d "$HOME"/.config/ranger ] && rm -rf "$HOME"/.config/ranger
 ln -sf "$path"/config/ranger/ "$HOME"/.config/ranger
@@ -70,3 +76,6 @@ ln -sf "$path"/local/share/themes "$HOME"/.local/share/themes
 
 [ -d "$HOME"/.local/share/wallpapers ] && rm -r "$HOME"/.local/share/wallpapers
 ln -sf "$path"/local/share/wallpapers "$HOME"/.local/share/wallpapers
+
+# Set executable
+chmod +x $HOME/.config/polybar/launch.sh

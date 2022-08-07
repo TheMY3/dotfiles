@@ -1,0 +1,35 @@
+[core]
+modules = title,spotify,github,nic,pasink,pasource,brightness,pacman,battery,gcalendar,caffeine,datetime,layout-xkb
+autohide =
+theme = iceberg-contrast
+
+[module-parameters]
+brightness.step=10
+
+github.token=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
+github.reasons=review_requested,mention,team_mention
+
+datetime.locale=ru_RU.UTF-8
+datetime.format=%b %d %R
+
+layout-xkb.showname=true
+
+pasink.percent_change=5
+pasink.limit=100
+pasink.showdevicename=true
+
+pasource.percent_change=5
+pasource.limit=100
+pasource.showdevicename=true
+
+arch-update.left-click=pamac-manager
+
+pacman.sum=true
+
+playerctl.hide=true
+# playerctl.format={{artist}} - {{title}}
+# playerctl.layout=playerctl.song
+spotify.concise_controls=true
+spotify.layout=spotify.song
+
+title.short=true
