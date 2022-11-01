@@ -190,8 +190,13 @@
     mouse_middle_click = close_all
     mouse_right_click = context, close_current
 
+close = ctrl+space
+close_all = ctrl+shift+space
+history = ctrl+grave
+context = ctrl+shift+period
+
 [log_notifs]
-    script = ~/.config/dunst/scripts/lognotifs.sh
+#    script = ~/.config/dunst/scripts/lognotifs.sh
 # [shortcuts]
 #     close = ctrl+space
 #     close_all = ctrl+shift+space
@@ -201,17 +206,17 @@
     background = "#121214"
     foreground = "#ffffff"
     timeout = 5
-    # icon = /usr/share/icons/Adwaita/32x32/status/dialog-information-symbolic.symbolic.png
+    icon = /usr/share/icons/Adwaita/32x32/status/dialog-information-symbolic.symbolic.png
 
 [urgency_normal]
     background = "#121214"
     foreground = "#ffffff"
     timeout = 5
-    # icon = /usr/share/icons/Adwaita/32x32/status/dialog-question-symbolic.symbolic.png
+    icon = /usr/share/icons/Adwaita/32x32/status/dialog-question-symbolic.symbolic.png
 
 [urgency_critical]
     background = "#121214"
     foreground = "#ffffff"
     frame_color = "#ff7f7f"
     timeout = 120
-    # icon = /usr/share/icons/Adwaita/32x32/status/dialog-warning-symbolic.symbolic.png
+    icon = /usr/share/icons/Adwaita/32x32/status/dialog-warning-symbolic.symbolic.png

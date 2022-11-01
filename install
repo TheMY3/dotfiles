@@ -34,11 +34,20 @@ ln -sf "$path"/config/gtk-3.0/ "$HOME"/.config/gtk-3.0
 [ -d "$HOME"/.config/kitty ] && rm -rf "$HOME"/.config/kitty
 ln -sf "$path"/config/kitty/ "$HOME"/.config/kitty
 
+[ -d "$HOME"/.config/networkmanager-dmenu ] && rm -rf "$HOME"/.config/networkmanager-dmenu
+ln -sf "$path"/config/networkmanager-dmenu/ "$HOME"/.config/networkmanager-dmenu
+
+[ -d "$HOME"/.config/picom ] && rm -rf "$HOME"/.config/picom
+ln -sf "$path"/config/picom/ "$HOME"/.config/picom
+
 [ -d "$HOME"/.config/polybar ] && rm -rf "$HOME"/.config/polybar
 ln -sf "$path"/config/polybar/ "$HOME"/.config/polybar
 
 [ -d "$HOME"/.config/ranger ] && rm -rf "$HOME"/.config/ranger
 ln -sf "$path"/config/ranger/ "$HOME"/.config/ranger
+
+[ -d "$HOME"/.config/rofi ] && rm -rf "$HOME"/.config/rofi
+ln -sf "$path"/config/rofi/ "$HOME"/.config/rofi
 
 [ -d "$HOME"/.config/sway ] && rm -rf "$HOME"/.config/sway
 ln -sf "$path"/config/sway/ "$HOME"/.config/sway
@@ -71,6 +80,8 @@ ln -sf "$path"/config/user-dirs.dirs "$HOME"/.config/user-dirs.dirs
 ln -sf "$path"/local/share/fonts "$HOME"/.local/share/fonts
 [ -d "$HOME"/.local/share/icons ] && rm -r "$HOME"/.local/share/icons
 ln -sf "$path"/local/share/icons "$HOME"/.local/share/icons
+[ -d "$HOME"/.local/share/rofi ] && rm -r "$HOME"/.local/share/rofi
+ln -sf "$path"/local/share/rofi "$HOME"/.local/share/rofi
 [ -d "$HOME"/.local/share/themes ] && rm -r "$HOME"/.local/share/themes
 ln -sf "$path"/local/share/themes "$HOME"/.local/share/themes
 

@@ -49,9 +49,10 @@
 - helm
 - terraform
 - python-gobject playerctl
-- php php-intl php-sqlite xdebug composer
+- php php-intl php-sqlite xdebug composer (old, yay now)
 
 ### AUR
+- php81-cli php81-mysql php81-sqlite php81-xdebug php81-sqlite php81-intl php81-bcmath php81-curl php81-dom php81-gd php81-pdo php81-xml php81-phar php81-iconv php81-mbstring php81-tokenizer php81-xmlwriter php81-simplexml
 - cliphist
 - swaync
 - wob
