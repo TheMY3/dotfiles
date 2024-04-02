@@ -1,0 +1,14 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	name = Yaroslav
+	email = yaroslav.molchan@gmail.com
+[pull]
+	rebase = true
+[core]
+	fileMode = false
+	editor = vim
