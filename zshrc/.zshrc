@@ -47,6 +47,9 @@ alias g='git'
 # Show diff
 alias gd='git diff'
 
+# Show branches
+alias gb='git branch'
+
 # Show short status
 alias gss='git status -s'
 

@@ -1,117 +1,56 @@
-syntax enable
-set showmode
-set backspace=indent,eol,start
-set number relativenumber
-let mapleader = ','
-set noerrorbells visualbell t_vb=
-set autowriteall
-set complete=.,w,b,u
-set tabstop=8
-set expandtab
-set softtabstop=4
-set shiftwidth=4
+" Source your .vimrc
+source ~/.vimrc
+
+" IDEA stuff
+set ideajoin
+set idearefactormode=keep
+set ideamarks
+
+" Plugins
+set surround
+set NERDTree
+
 set clipboard=unnamedplus
 
+" Custom mappings
 
+" NEW
 
+map <A-1> <Action>(ActivateProjectToolWindow)
+map <A-r> <Action>(FileStructurePopup)
 
+map <leader>a <Action>(ShowIntentionActions)
 
-"------------Visuals-------------"
-set background=dark
+" Search
 
+map <leader>fa <Action>(SearchEverywhere)
 
+map <leader>ff <Action>(GotoFile)
+map <leader>fg <Action>(FindInPath)
+map <leader>fc <Action>(FindInPath)
+map <leader>fs <Action>(GotoSymbol)
+map <leader>fb <Action>(RecentFiles)
+map <leader>fd <Action>(HelpDiagnosticTools)
+map <leader>ft <Action>(ActivateTODOToolWindow)
 
+" LSP
 
+map gD <Action>(GotoTypeDeclaration)
+map gd <Action>(GotoDeclaration)
+map gi <Action>(GotoImplementation)
+map gr <Action>(GotoDeclaration)
+map <leader>rn <Action>(RenameElement)
 
-"------------Search-------------"
-set hlsearch
-set incsearch
-set ignorecase
+map <leader>oc <Action>(ReformatCode)
+map <leader>oi <Action>(OptimizeImports)
+map <leader>oa <Action>(ReformatCode)<Action>(OptimizeImports)
+map <leader>jev <Action>(IntroduceVariable)
+map <leader>jec <Action>(IntroduceConstant)
+map <leader>jem <Action>(ExtractMethod)
 
+" Test
 
-
-
-
-"------------Split Management-------------"
-set splitbelow
-set splitright
-
-" Move Curent Cursor to Left
-nmap <C-h> :action VimWindowLeft<CR>
-
-" Move Curent Cursor to Down
-nmap <C-j> :action VimWindowDown<CR>
-
-" Move Curent Cursor to Up
-nmap <C-k> :action VimWindowUp<CR>
-
-" Move Curent Cursor to Right
-nmap <C-l> :action VimWindowRight<CR>
-
-
-
-
-
-"------------Mappings-------------"
-"Add simple highlight removal.
-nmap <Leader><space> :nohlsearch<cr>
-
-" CtrlPBufTag
-nnoremap <A-r> :action FileStructurePopup<CR>
-
-" CtrlPMRUFiles
-nnoremap <C-e> :action RecentFiles<CR>
-
-" TagbarToggle
-nnoremap <C-p> :action GotoFile<CR>
-
-
-
-
-
-"------------Plugins-------------"
-
-" pdv
-nnoremap <leader>d :action PhpGeneratePhpDocBlocks<CR>
-
-" AceJump (vim Easymotion)
-nnoremap <Leader><Leader>s :action AceAction<CR>
-
-
-" ============================================================================
-" Editor control
-" ============================================================================
-
-" Reload .ideavimrc
-nnoremap <Leader>vs :source ~/.ideavimrc<CR>
-
-
-
-" ============================================================================
-" IDE actions
-" ============================================================================
-" Create a Window Horizontally
-nmap sp :action SplitHorizontally<CR><C-j>
-
-" Create a Window Vertically
-nmap vsp :action SplitVertically<CR><C-l>
-
-" Nerdcommenter comment lines
-nnoremap <leader>cc :action CommentByLineComment<CR>
-
-" Nerdcommenter uncomment lines
-nnoremap <leader>cu :action CommentByLineComment<CR>
-
-" build and debug actions
-" nnoremap <F5> :action PhpListenDebugAction<CR>
-" nnoremap <F10> :action ToggleLineBreakpoint<CR>
-" nnoremap <F2> :action StepOver<CR>
-" nnoremap <F3> :action StepInto<CR>
-" nnoremap <F4> :action StepOut<CR>
-" nnoremap <F6> :action Stop<CR>
-" nnoremap <F8> :action EvaluateExpression<CR>
-" nnoremap <F12> :action QuickEvaluateExpression<CR>
-
-set surround
-set multiple-cursors
-set NERDTree
+map <leader>ot <Action>(GotoTest)
+map <leader>ct <Action>(GenerateTestMethod)
+map <leader>C <Action>(Generate)
+map <leader>tt <Action>(RunClass)

@@ -1,78 +1,45 @@
+" Vim Configuration based on Neovim setup
+" Created: March 15, 2025
+
+" Basic Settings
 set nocompatible
 
-syntax enable
-set backspace=indent,eol,start
-set number relativenumber
-"The default leader is \, but comma is mutch better
-let mapleader = ','	
-"No damn bells!
-set noerrorbells visualbell t_vb=
-"Automatically write the file when switching buffers.
-set autowriteall
-"Set our desired authocompletion matching.
-set complete=.,w,b,u
-set tabstop=8
-set expandtab
-set softtabstop=4
-set shiftwidth=4
-set dir-=.
-set dir+=/tmp
-set shell=bash
-"Set global clipboard
-"set clipboard=unnamed
-set clipboard+=unnamedplus
+" Set leader key to space (matching Neovim config)
+let mapleader = " "
 
-"------------Visuals-------------"
-set background=dark
-set t_CO=256				"Useful for Terminal Vim
-"set guifont=MonacoB\ Italic\ 10
-"set guifont=Operator\Mono\ weight=330\ 10
-"set guifont=Inconsolata\ LGC\ Medium\ Italic\ 10
-"set guifont=Inconsolata\ LGC\ Medium\ 10
-set guifont=Fira\ Mono\ for\ Powerline\ Italic\ 10
-set linespace=13
-set guioptions-=e			"We don`t want Gui tabs.
-
-set guioptions-=l			"Disable Gui scrollbars.
-set guioptions-=L
-set guioptions-=r
-set guioptions-=R
-"set guioptions-=m
-"set guioptions-=T guioptions-=m                                "hide tool and menu bar
-
-"Get rid of ugly split borders.
-hi vertsplit guifg=bg guibg=bg
-
-"------------Search-------------"
+" Search and highlighting
+set showmatch
+set ignorecase
 set hlsearch
 set incsearch
-set ignorecase
 
-"------------Split Management-------------"
-set splitbelow
-set splitright
+" Tab and indentation settings
+set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth=4
+set autoindent
 
-nmap <C-J> <C-W><C-J>
-nmap <C-K> <C-W><C-K>
-nmap <C-H> <C-W><C-H>
-nmap <C-L> <C-W><C-L>
+" Interface
+set number relativenumber
 
-"------------Mappings-------------"
+" File type support and syntax highlighting
+filetype plugin indent on
+syntax on
+filetype plugin on
 
-"Make it easy to edit the Vimrc file.
-nmap <Leader>ev :tabedit $MYVIMRC<cr>
+" Optimization
+set ttyfast
 
-"Add simple highlight removal.
-nmap <Leader><space> :nohlsearch<cr>
+" UI customization (remove background for some elements)
+hi NonText ctermbg=NONE guibg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+hi NormalNC guibg=NONE ctermbg=NONE
+hi SignColumn ctermbg=NONE ctermfg=NONE guibg=NONE
+hi Pmenu ctermbg=NONE ctermfg=NONE guibg=NONE
+hi FloatBorder ctermbg=NONE ctermfg=NONE guibg=NONE
+hi NormalFloat ctermbg=NONE ctermfg=NONE guibg=NONE
+hi TabLine ctermbg=NONE ctermfg=NONE guibg=NONE
 
-nmap vs :vsplit<CR>
-nmap sp :split<CR>
-"------------Plugins-------------"
-
-
-" Notes and Tips
-" - Press 'zz' to instantly center the line where cursor is located.
-" - 'tn' - next tag, 'tp' - previous tag, 'ts' - all matches
-" - '<C-]> - where method was defined, <C-^> - to previous location
-" - :Gsearch , then :s/Find/Replace, select in visual mode, Greplace, :wo - to save all files
-
+" Custom mappings
+nnoremap <Leader><space> :nohlsearch<CR>

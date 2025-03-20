@@ -1,4 +1,4 @@
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 -- Disable compatibility with vi
 vim.cmd('set nocompatible')
@@ -18,8 +18,6 @@ vim.cmd('set autoindent')
 
 -- Interface
 vim.cmd('set number relativenumber')
-vim.cmd('set mouse=a')
-vim.cmd('set clipboard=unnamedplus')
 
 -- File type support and syntax highlighting
 vim.cmd('filetype plugin indent on')
@@ -40,5 +38,8 @@ vim.cmd [[
     hi NormalFloat ctermbg=NONE ctermfg=NONE guibg=NONE
     hi TabLine ctermbg=None ctermfg=None guibg=None
 ]]
+
+-- Custom mappings
+vim.keymap.set('n', '<Leader><space>', ':nohlsearch<CR>', { noremap = true })
 
 require("config.lazy")
