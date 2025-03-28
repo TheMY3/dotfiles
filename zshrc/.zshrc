@@ -25,9 +25,17 @@ SAVEHIST=50000
 # Append commands to history file as they are executed
 setopt inc_append_history
 
+# bindkey '\e[A' history-search-backward
+# bindkey '\e[B' history-search-forward
+
+# Load history-substring-search
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
 # Enable history search with up/down arrows
-bindkey '\e[A' history-search-backward
-bindkey '\e[B' history-search-forward
+bindkey '\e[A' up-line-or-beginning-search
+bindkey '\e[B' down-line-or-beginning-search
 
 
 # Function to determine the main branch (main or master)
