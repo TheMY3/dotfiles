@@ -45,6 +45,8 @@ git_main_branch() {
 
 # ALIASES
 
+alias cc='claude'
+
 alias nf='fzf -m --preview="bat --color=always {}" --bind "enter:become(nvim {+})"'
 
 # Git aliases
@@ -67,7 +69,10 @@ alias gaa='git add --all'
 # Amend last commit with changes
 alias gca!='git commit --verbose --all --amend'
 
-# Commit all changes with a message
+# Commit all changes
+alias gca='git commit -a'
+
+# Commit all changes with message
 alias gcam='git commit -a -m'
 
 # Create and switch to a new branch
@@ -104,3 +109,9 @@ alias dcup='docker compose up'
 
 # Stop and remove containers, networks, volumes
 alias dcdn='docker compose down'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="/home/my/.local/bin:$PATH"
