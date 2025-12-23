@@ -13,7 +13,7 @@ input=$(cat)
 cwd=$(echo "$input" | sed -n 's/.*"current_dir":"\([^"]*\)".*/\1/p')
 
 if git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
-  repo_name=$(echo "$cwd" | sed "s|^$HOME/Websites/||")
+  repo_name=$(basename "$cwd")
   branch=$(git -C "$cwd" --no-optional-locks rev-parse --abbrev-ref HEAD 2>/dev/null)
   staged=$(git -C "$cwd" --no-optional-locks diff --cached --name-only 2>/dev/null | wc -l)
   unstaged=$(git -C "$cwd" --no-optional-locks diff --name-only 2>/dev/null | wc -l)
