@@ -5,7 +5,7 @@
       {
         "id": "1",
         "type": "context-percentage",
-        "color": "yellow",
+        "color": "#B48EAD",
         "bold": true,
         "rawValue": true
       }
@@ -15,15 +15,13 @@
   ],
   "flexMode": "full-minus-40",
   "compactThreshold": 60,
-  "colorLevel": 2,
+  "colorLevel": 3,
   "inheritSeparatorColors": false,
   "globalBold": false,
   "powerline": {
     "enabled": false,
     "separators": [""],
-    "separatorInvertBackground": [
-      false
-    ],
+    "separatorInvertBackground": [false],
     "startCaps": [],
     "endCaps": [],
     "autoAlign": false
