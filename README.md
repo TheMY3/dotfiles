@@ -22,6 +22,7 @@ stow zshrc kitty nvim starship icons themes
 | `ideavim` | IdeaVim config | `stow ideavim` |
 | `claude` | Claude Code settings | `stow claude` |
 | `backgrounds` | Wallpapers | `stow backgrounds` |
+| `hyprshade` | Custom blue-light-filter-soft shader | `stow hyprshade` |
 
 ## Theme Sources
 
