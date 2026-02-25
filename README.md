@@ -19,6 +19,9 @@ stow zshrc kitty nvim starship icons themes
 | `starship` | Starship prompt | `stow starship` |
 | `icons` | Sweet-cursors | `stow icons` |
 | `themes` | Orchis-dark GTK theme | `stow themes` |
+| `ideavim` | IdeaVim config | `stow ideavim` |
+| `claude` | Claude Code settings | `stow claude` |
+| `backgrounds` | Wallpapers | `stow backgrounds` |
 
 ## Theme Sources
 
@@ -27,9 +30,6 @@ stow zshrc kitty nvim starship icons themes
 | Orchis-dark | https://github.com/vinceliuice/Orchis-theme |
 | Colloid-Dark (icons) | https://github.com/vinceliuice/Colloid-gtk-theme |
 | Sweet-cursors | https://github.com/EliverLara/Sweet |
-| `ideavim` | IdeaVim config | `stow ideavim` |
-| `claude` | Claude Code settings | `stow claude` |
-| `backgrounds` | Wallpapers | `stow backgrounds` |
 
 ## ML4W Overrides
 
@@ -42,6 +42,21 @@ cp -r ~/dotfiles-new/ml4w-overrides/.config/* ~/.config/
 Then in ML4W Settings select:
 - Monitors → `my.conf`
 - Keybindings → `my.conf`
+- Windows → `my.conf`
+
+### ML4W Overrides Contents
+
+| Path | Description |
+|------|-------------|
+| `hypr/conf/custom.conf` | Keyboard layout, autostart apps, spotify windowrule |
+| `hypr/conf/keybindings/my.conf` | Super+D launcher, Print screenshots |
+| `hypr/conf/monitors/my.conf` | Monitor scale 1 |
+| `hypr/conf/windows/my.conf` | Reduced gaps (out=10, in=5) |
+| `waybar/modules.json` | Workspaces icons, clock tooltip |
+| `waybar/themes/ml4w-modern/*` | Custom layout, nowplaying style |
+| `ml4w/scripts/ml4w-now-playing` | VISIBLE_MIN=23 |
+| `rofi/config.rasi` | 2 columns, no mode-switcher |
+| `rofi/colors.rasi` | Nord colors |
 
 See [ml4w-overrides/README.md](ml4w-overrides/README.md) for details.
 
