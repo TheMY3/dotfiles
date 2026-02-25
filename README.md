@@ -19,6 +19,14 @@ stow zshrc kitty nvim starship icons themes
 | `starship` | Starship prompt | `stow starship` |
 | `icons` | Sweet-cursors | `stow icons` |
 | `themes` | Orchis-dark GTK theme | `stow themes` |
+
+## Theme Sources
+
+| Theme | Source |
+|-------|--------|
+| Orchis-dark | https://github.com/vinceliuice/Orchis-theme |
+| Colloid-Dark (icons) | https://github.com/vinceliuice/Colloid-gtk-theme |
+| Sweet-cursors | https://github.com/EliverLara/Sweet |
 | `ideavim` | IdeaVim config | `stow ideavim` |
 | `claude` | Claude Code settings | `stow claude` |
 | `backgrounds` | Wallpapers | `stow backgrounds` |
