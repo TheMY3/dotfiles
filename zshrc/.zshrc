@@ -49,6 +49,9 @@ alias cc='claude'
 
 alias nf='fzf -m --preview="bat --color=always {}" --bind "enter:become(nvim {+})"'
 
+alias ll='eza -al --icons=always'
+alias lt='eza -a --tree --level=1 --icons=always'
+
 # Git aliases
 
 # Shortcut for git command
@@ -115,3 +118,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="/home/my/.local/bin:$PATH"
+export PATH="$HOME/.volta/bin:$PATH"
