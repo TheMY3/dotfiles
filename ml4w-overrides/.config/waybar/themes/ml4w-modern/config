@@ -27,10 +27,10 @@
         "battery",
         "group/hardware",
         "group/tools",
-        "hyprland/language",
         "tray",
         "custom/notification",
         "custom/exit",
+        "hyprland/language",
         "clock"
     ]
 }
