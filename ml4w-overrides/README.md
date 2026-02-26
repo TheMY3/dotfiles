@@ -5,7 +5,7 @@ Custom settings for ML4W dotfiles. After ML4W update, copy these files to restor
 ## Quick restore
 
 ```bash
-cp -r ~/dotfiles-new/ml4w-overrides/.config/* ~/.config/
+cp -r ~/dotfiles/ml4w-overrides/.config/* ~/.config/
 ```
 
 ## After restore
@@ -18,13 +18,14 @@ Note: Hyprland doesn't follow symlinks, so use `cp` not `ln -s`.
 
 ML4W overwrites `~/.zshrc` on fresh install. Restore via stow:
 ```bash
-cd ~/dotfiles-new && stow zshrc
+cd ~/dotfiles && stow zshrc
 ```
 
 ## Files
 
 ### `.config/hypr/conf/custom.conf`
 Hyprland customizations (auto-loaded by ML4W):
+- SSH_AUTH_SOCK env variable for ssh-agent
 - Keyboard layout us,ru with Alt+Shift toggle
 - Caps Lock as Escape
 - Hyprshade blue-light-filter on startup
@@ -35,9 +36,9 @@ Monitor variation (select in ML4W Settings → Monitors):
 
 ### `.config/hypr/conf/keybindings/my.conf`
 Custom keybindings (select in ML4W Settings → Appearance → Keybindings):
-- Ctrl+D — open app launcher
-- Print — instant fullscreen screenshot (save + clipboard)
-- Shift+Print — instant area screenshot (save + clipboard)
+- Super+D — open app launcher
+- Print — instant fullscreen screenshot (save + notify)
+- Shift+Print — instant area screenshot (save + notify)
 
 ### `.config/ml4w/settings/dock-disabled`
 Empty file - disables nwg-dock-hyprland (bottom dock panel)
