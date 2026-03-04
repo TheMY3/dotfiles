@@ -6,7 +6,7 @@ Personal dotfiles managed with GNU Stow.
 
 ```bash
 cd ~/dotfiles
-stow zshrc vim ideavim git kitty nvim starship icons themes backgrounds hyprshade claude
+stow zshrc vim ideavim git kitty nvim starship icons themes backgrounds hyprshade claude gtk
 ```
 
 ## Packages
@@ -25,6 +25,7 @@ stow zshrc vim ideavim git kitty nvim starship icons themes backgrounds hyprshad
 | `claude` | Claude Code settings | `stow claude` |
 | `backgrounds` | Wallpapers | `stow backgrounds` |
 | `hyprshade` | Custom blue-light-filter-soft shader | `stow hyprshade` |
+| `gtk` | GTK bookmarks + settings | `stow gtk` |
 
 ## Theme Sources
 
@@ -68,7 +69,7 @@ See [ml4w-overrides/README.md](ml4w-overrides/README.md) for details.
 1. Install stow packages:
    ```bash
    cd ~/dotfiles
-   stow zshrc vim ideavim git kitty nvim starship icons themes backgrounds hyprshade claude
+   stow zshrc vim ideavim git kitty nvim starship icons themes backgrounds hyprshade claude gtk
    ```
 
 2. Copy ML4W overrides:
