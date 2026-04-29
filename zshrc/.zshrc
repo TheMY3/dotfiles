@@ -119,3 +119,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="/home/my/.local/bin:$PATH"
 export PATH="$HOME/.volta/bin:$PATH"
+
+# peon-ping quick controls
+alias peon="bash /home/my/.claude/hooks/peon-ping/peon.sh"
+[ -f /home/my/.claude/hooks/peon-ping/completions.bash ] && source /home/my/.claude/hooks/peon-ping/completions.bash
