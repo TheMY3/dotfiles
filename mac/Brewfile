@@ -1,6 +1,22 @@
 tap "peonping/tap"
 
+# Core CLI
 brew "stow"
+brew "gh"
+brew "starship"
+
+# Shell tools used by .zshrc
+brew "fzf"
+brew "bat"
+brew "eza"
+
+# Editors
+brew "neovim"
+
+# Notifications
 brew "peonping/tap/peon-ping"
 
+# GUI / casks
 cask "claude-code"
+cask "kitty"
+cask "font-jetbrains-mono-nerd-font"
