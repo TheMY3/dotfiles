@@ -5,12 +5,12 @@
 	helper =
 	helper = !gh auth git-credential
 [user]
-	name = Yaroslav
-	email = yaroslav@freelancehunt.com
+	name = TheMY3
+	email = yaroslav.molchan@gmail.com
 [pull]
 	rebase = true
 [core]
 	fileMode = false
 	editor = nvim
-[includeIf "gitdir:~/Developer/themy3/"]
-	path = ~/.gitconfig-personal
+[includeIf "gitdir:~/Developer/freelancehunt/"]
+	path = ~/.gitconfig-work
