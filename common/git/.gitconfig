@@ -1,14 +1,16 @@
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper =
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper =
+	helper = !gh auth git-credential
 [user]
-	name = Yaroslav
-	email = yaroslav@freelancehunt.com
+	name = TheMY3
+	email = yaroslav.molchan@gmail.com
 [pull]
 	rebase = true
 [core]
 	fileMode = false
 	editor = nvim
+[includeIf "gitdir:~/Developer/freelancehunt/"]
+	path = ~/.gitconfig-work
