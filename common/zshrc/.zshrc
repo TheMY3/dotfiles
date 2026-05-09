@@ -8,8 +8,8 @@ eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# Set default editor to Neovim
-export EDITOR="nvim"
+# Set default editor to Vim
+export EDITOR="vim"
 export SUDO_EDITOR="$EDITOR"
 
 # Set a compatible terminal type if xterm-kitty is not supported
