@@ -11,6 +11,6 @@
 	rebase = true
 [core]
 	fileMode = false
-	editor = nvim
+	editor = vim
 [includeIf "gitdir:~/Developer/freelancehunt/"]
 	path = ~/.gitconfig-work
