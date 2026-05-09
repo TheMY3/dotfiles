@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/peon.sh",
+            "command": "bash ~/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10
           }
         ]
@@ -19,8 +19,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10
+            "command": "bash ~/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -31,8 +32,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10
+            "command": "bash ~/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -43,8 +45,13 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10
+            "command": "bash ~/.claude/hooks/peon-ping/scripts/hook-handle-use.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/peon-ping/scripts/hook-handle-rename.sh",
+            "timeout": 5
           }
         ]
       },
@@ -53,13 +60,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/scripts/hook-handle-use.sh",
-            "timeout": 5
-          },
-          {
-            "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/scripts/hook-handle-rename.sh",
-            "timeout": 5
+            "command": "bash ~/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -70,8 +73,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10
+            "command": "bash ~/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -82,8 +86,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10
+            "command": "bash ~/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -94,8 +99,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10
+            "command": "bash ~/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -106,8 +112,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10
+            "command": "bash ~/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -118,8 +125,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/my/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10
+            "command": "bash ~/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }

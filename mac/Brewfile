@@ -1,0 +1,6 @@
+tap "peonping/tap"
+
+brew "stow"
+brew "peonping/tap/peon-ping"
+
+cask "claude-code"
