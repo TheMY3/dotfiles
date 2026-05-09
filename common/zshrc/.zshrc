@@ -1,3 +1,10 @@
+# Prepend Homebrew binaries to PATH (no-op on Linux — brew not present)
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 # Load zsh completion system (fzf and others register via compdef)
 autoload -Uz compinit
 compinit
