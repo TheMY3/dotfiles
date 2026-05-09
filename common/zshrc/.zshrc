@@ -1,3 +1,7 @@
+# Load zsh completion system (fzf and others register via compdef)
+autoload -Uz compinit
+compinit
+
 # Initialize Starship prompt
 eval "$(starship init zsh)"
 
