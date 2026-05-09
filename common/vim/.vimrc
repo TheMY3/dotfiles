@@ -41,22 +41,24 @@ filetype plugin indent on
 syntax on
 
 " -----------------------------------------------------
-" Plugins (vim-plug)
+" Plugins (vim-plug) — skipped in IdeaVim (PhpStorm)
 " Auto-install vim-plug on first run
 " -----------------------------------------------------
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+if !has('ide')
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
 
-call plug#begin('~/.vim/plugged')
-Plug 'nordtheme/vim'
-Plug 'vim-airline/vim-airline'
-Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-call plug#end()
+  call plug#begin('~/.vim/plugged')
+  Plug 'nordtheme/vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'preservim/nerdtree'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  call plug#end()
+endif
 
 " Colorscheme (silent — first run before plugins are installed)
 silent! colorscheme nord
