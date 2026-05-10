@@ -20,4 +20,5 @@ brew "peonping/tap/peon-ping"
 # GUI / casks
 cask "claude-code"
 cask "kitty"
+cask "karabiner-elements"
 cask "font-jetbrains-mono-nerd-font"
