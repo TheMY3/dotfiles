@@ -5,6 +5,7 @@ $directory\
 $git_branch$git_status\
 $php\
 $cmd_duration\
+$time\
 [](fg:prev_bg)\
 $line_break\
 $character
@@ -65,6 +66,12 @@ format = "[ $symbol]($style)"
 
 [cmd_duration]
 format = '[](bg:#d9dee9 fg:prev_bg)[ 󰔚 $duration ](fg:#2e3440 bg:#d9dee9)'
+
+
+[time]
+disabled = false
+time_format = "%R"
+format = '[](bg:#b48ead fg:prev_bg)[  $time ](fg:#2e3440 bg:#b48ead)'
 
 [character]
 success_symbol = "[ 󷞩](bold green)"
