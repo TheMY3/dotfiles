@@ -38,3 +38,6 @@ cask "font-sf-pro"           # SF Symbols PUA glyphs used in icons.sh (apple, ba
 cask "slack"
 cask "telegram"
 cask "spotify"
+
+# Screenshots
+cask "shottr"
