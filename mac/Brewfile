@@ -24,3 +24,8 @@ cask "kitty"
 cask "karabiner-elements"
 cask "font-jetbrains-mono-nerd-font"
 cask "nikitabobko/tap/aerospace"
+
+# Communication / media (auto-assigned to workspaces by aerospace)
+cask "slack"
+cask "telegram"
+cask "spotify"

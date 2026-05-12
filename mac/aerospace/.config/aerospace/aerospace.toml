@@ -66,3 +66,17 @@ alt-shift-9 = 'move-node-to-workspace 9'
 
 # Reload config
 alt-shift-semicolon = 'reload-config'
+
+# Auto-assign apps to workspaces on launch.
+# To trigger for already-running apps: quit & reopen, or `aerospace reload-config`.
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 6'
