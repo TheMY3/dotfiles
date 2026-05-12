@@ -31,6 +31,7 @@ brew "sketchybar"
 brew "jq"
 brew "switchaudio-osx"
 cask "font-sketchybar-app-font"
+cask "font-sf-pro"           # SF Symbols PUA glyphs used in icons.sh (apple, battery, …)
 
 # Communication / media (auto-assigned to workspaces by aerospace)
 cask "slack"
