@@ -1,9 +1,16 @@
 after-login-command = []
-after-startup-command = ['exec-and-forget sketchybar']
+after-startup-command = [
+    'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar',
+]
 
-# Notify sketchybar on every workspace change so items/spaces.sh can repaint.
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+# Notify sketchybar on every workspace change. plugins/space_windows.sh
+# reads $AEROSPACE_FOCUSED_WORKSPACE and $AEROSPACE_PREV_WORKSPACE to
+# repaint the highlight, so pass them through verbatim. Absolute path is
+# required because aerospace's launchd PATH doesn't include /opt/homebrew/bin.
+exec-on-workspace-change = [
+    '/bin/bash',
+    '-c',
+    '/opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
 ]
 
 start-at-login = true
