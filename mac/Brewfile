@@ -25,6 +25,12 @@ cask "karabiner-elements"
 cask "font-jetbrains-mono-nerd-font"
 cask "nikitabobko/tap/aerospace"
 
+# SketchyBar status bar (driven by aerospace workspace events)
+brew "sketchybar"
+brew "jq"
+brew "switchaudio-osx"
+cask "font-sketchybar-app-font"
+
 # Communication / media (auto-assigned to workspaces by aerospace)
 cask "slack"
 cask "telegram"
