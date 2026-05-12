@@ -1,6 +1,9 @@
 after-login-command = []
 after-startup-command = [
     'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar',
+    # JankyBorders frame around the focused window. Nord frost as active,
+    # Afaneor's dim grey-purple for inactive (re-uses their alpha tuning).
+    'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color=0xff88c0d0 inactive_color=0x20494d64 width=4.0',
 ]
 
 # Notify sketchybar on every workspace change. plugins/space_windows.sh

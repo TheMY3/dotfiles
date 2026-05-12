@@ -28,6 +28,7 @@ cask "nikitabobko/tap/aerospace"
 
 # SketchyBar status bar (driven by aerospace workspace events)
 brew "sketchybar"
+brew "borders"               # JankyBorders, launched from aerospace after-startup-command
 brew "jq"
 brew "switchaudio-osx"
 cask "font-sketchybar-app-font"
