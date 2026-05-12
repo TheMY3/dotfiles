@@ -15,6 +15,12 @@ exec-on-workspace-change = [
 
 start-at-login = true
 
+# Keep the cursor on the active window/monitor so OS-level focus-follows-mouse
+# checks (browser drag-and-drop targets, system shortcuts, etc.) line up with
+# what aerospace considers focused.
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = ['move-mouse window-lazy-center']
+
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
