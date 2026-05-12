@@ -1,5 +1,6 @@
 tap "peonping/tap"
 tap "nikitabobko/tap"
+tap "FelixKratz/formulae"
 
 # Core CLI
 brew "stow"
