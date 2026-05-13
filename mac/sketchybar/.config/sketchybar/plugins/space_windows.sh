@@ -47,17 +47,22 @@ if [ "$SENDER" = "aerospace_workspace_change" ]; then
   reload_workspace_icon "$AEROSPACE_PREV_WORKSPACE"
   reload_workspace_icon "$AEROSPACE_FOCUSED_WORKSPACE"
 
-  #sketchybar --animate sin 10 --set space.$space label="$icon_strip"
-
-  # current workspace space border color
-  sketchybar --set space.$AEROSPACE_FOCUSED_WORKSPACE icon.highlight=true \
+  # Focused — всегда показываем и подсвечиваем
+  sketchybar --set space.$AEROSPACE_FOCUSED_WORKSPACE drawing=on \
+                         icon.highlight=true \
                          label.highlight=true \
                          background.border_color=$GREY
 
-  # prev workspace space border color
-  sketchybar --set space.$AEROSPACE_PREV_WORKSPACE icon.highlight=false \
-                         label.highlight=false \
-                         background.border_color=$BACKGROUND_2
+  # Prev — скрываем если пустой
+  PREV_APPS=$(aerospace list-windows --workspace "$AEROSPACE_PREV_WORKSPACE" 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$PREV_APPS" -eq 0 ]; then
+    sketchybar --set space.$AEROSPACE_PREV_WORKSPACE drawing=off
+  else
+    sketchybar --set space.$AEROSPACE_PREV_WORKSPACE drawing=on \
+                           icon.highlight=false \
+                           label.highlight=false \
+                           background.border_color=$BACKGROUND_2
+  fi
 
   # if [ "$AEROSPACE_FOCUSED_WORKSPACE" -gt 3 ]; then
   #   sketchybar --animate sin 10 --set space.$AEROSPACE_FOCUSED_WORKSPACE display=1

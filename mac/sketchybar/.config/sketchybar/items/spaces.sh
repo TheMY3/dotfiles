@@ -42,6 +42,11 @@ for sid in 1 2 3 4 5 6; do
   fi
 
   sketchybar --set space.$sid label="$icon_strip"
+
+  # Скрываем пустые, кроме focused
+  if [ "${apps}" = "" ] && [ "$sid" != "$FOCUSED_WS" ]; then
+    sketchybar --set space.$sid drawing=off
+  fi
 done
 
 
