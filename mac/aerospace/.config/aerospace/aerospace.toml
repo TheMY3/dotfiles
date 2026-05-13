@@ -4,6 +4,11 @@ after-startup-command = [
     # JankyBorders frame around the focused window. Nord frost as active,
     # Afaneor's dim grey-purple for inactive (re-uses their alpha tuning).
     'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color=0xff88c0d0 inactive_color=0x20494d64 width=4.0',
+    # App auto-launch. Slack before Telegram so it lands on the left in ws 3.
+    'exec-and-forget open -a "Slack"',
+    'exec-and-forget open -a "Telegram"',
+    'exec-and-forget open -a "Spotify"',
+    'exec-and-forget open -a "Google Chrome"',
 ]
 
 # Notify sketchybar on every workspace change. plugins/space_windows.sh
@@ -90,6 +95,14 @@ alt-shift-semicolon = 'reload-config'
 
 # Auto-assign apps to workspaces on launch.
 # To trigger for already-running apps: quit & reopen, or `aerospace reload-config`.
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.PhpStorm'
+run = 'move-node-to-workspace 2'
+
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace 3'
