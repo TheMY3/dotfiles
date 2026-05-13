@@ -1,7 +1,11 @@
 #!/bin/sh
 
-SSID=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk -F:  '($1 ~ "^ *SSID$"){print $2}' | cut -c 2-)
+source "$CONFIG_DIR/colors.sh"
 
-sketchybar --set wifi \
-  icon= icon.color=0xff58d1fc \
-  label="$SSID"
+SSID=$(networksetup -getairportnetwork en0 2>/dev/null | sed 's/Current Wi-Fi Network: //')
+
+if [ -z "$SSID" ] || [ "$SSID" = "You are not associated with an AirPort network." ]; then
+  sketchybar --set wifi label="Off" icon.color=$RED
+else
+  sketchybar --set wifi label="$SSID" icon.color=$BLUE
+fi

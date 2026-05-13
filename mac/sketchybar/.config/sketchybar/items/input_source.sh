@@ -2,9 +2,10 @@
 
 sketchybar --add item input_source right
 sketchybar --set input_source \
-    icon.font="$FONT:Regular:20.0" \
+    label.font="$FONT:Bold:13.0" \
+    label.color=0xffffffff \
+    icon.drawing=off \
     script="$PLUGIN_DIR/get_input_source.sh" \
-    icon.color=0xffffffff \
-    update_freq=1 
+    update_freq=2
 
 

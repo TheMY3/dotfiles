@@ -76,8 +76,6 @@ source "$ITEM_DIR/front_app.sh"
 #source "$ITEM_DIR/yabai.sh"
 
 # Center
-# source "$ITEM_DIR/spotify.sh"
-# source "$ITEM_DIR/media.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
@@ -86,13 +84,14 @@ source "$ITEM_DIR/battery.sh"
 #source "$ITEM_DIR/brew.sh"
 #source "$ITEM_DIR/github.sh"
 # wifi.sh and svim.sh are referenced by upstream but never shipped — leave off.
-#source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/volume.sh"
 #source "$ITEM_DIR/svim.sh"
 
 # cpu.sh needs the helper binary; weather.sh is hardcoded to Seoul in Korean.
 #source "$ITEM_DIR/cpu.sh"
-#source "$ITEM_DIR/weather.sh"
+source "$ITEM_DIR/weather.sh"
+source "$ITEM_DIR/media.sh"
 
 sketchybar --hotload on
 
