@@ -39,12 +39,19 @@ default-root-container-orientation = 'auto'
 
 key-mapping.preset = 'qwerty'
 
-gaps.inner.horizontal = 8
-gaps.inner.vertical   = 8
-gaps.outer.left       = 8
-gaps.outer.bottom     = 8
-gaps.outer.top        = 8
-gaps.outer.right      = 8
+[exec]
+inherit-env-vars = true
+
+[exec.env-vars]
+PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+
+[gaps]
+inner.horizontal = 8
+inner.vertical   = 8
+outer.left       = 8
+outer.bottom     = 8
+outer.top        = 8
+outer.right      = 8
 
 [mode.main.binding]
 # Focus
@@ -66,7 +73,15 @@ alt-equal    = 'resize smart +50'
 # Layout
 alt-slash    = 'layout tiles horizontal vertical'
 alt-comma    = 'layout accordion horizontal vertical'
+
+# Join — объединить с соседним окном в подконтейнер
+alt-ctrl-h = 'join-with left'
+alt-ctrl-j = 'join-with down'
+alt-ctrl-k = 'join-with up'
+alt-ctrl-l = 'join-with right'
 alt-f        = 'fullscreen'
+alt-t        = 'layout floating tiling'
+alt-shift-f  = 'flatten-workspace-tree'
 
 # Workspaces 1–9
 alt-1 = 'workspace 1'
@@ -79,16 +94,19 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 
-# Move window to workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
+# Move window to workspace and follow
+alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+
+# Switch between last two workspaces
+alt-tab = 'workspace-back-and-forth'
 
 # Reload config
 alt-shift-semicolon = 'reload-config'
@@ -114,3 +132,24 @@ run = 'move-node-to-workspace 3'
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 6'
+
+# System apps — always floating
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.SystemPreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Archive-Utility'
+run = 'layout floating'
