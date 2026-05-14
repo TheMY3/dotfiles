@@ -36,6 +36,13 @@
 |--------|--------|
 | `alt+shift+;` | Перезагрузить конфиг |
 
+### Apps
+| Hotkey | Action |
+|--------|--------|
+| `alt+enter` | Открыть новое окно Kitty |
+| `alt+e` | Finder |
+| `alt+b` | Google Chrome |
+
 ---
 
 ## Kitty
