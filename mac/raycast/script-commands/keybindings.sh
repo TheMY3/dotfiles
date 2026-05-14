@@ -3,10 +3,10 @@
 # Required parameters:
 # @raycast.schemaVersion 1
 # @raycast.title Keybindings
-# @raycast.mode fullOutput
+# @raycast.mode silent
 
 # Optional parameters:
 # @raycast.icon ⌨️
 # @raycast.packageName Dotfiles
 
-/opt/homebrew/bin/glow ~/Developer/themy3/dotfiles/KEYBINDINGS.md
+open -a MacDown ~/Developer/themy3/dotfiles/KEYBINDINGS.md

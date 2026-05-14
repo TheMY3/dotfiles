@@ -42,5 +42,5 @@ cask "spotify"
 # Screenshots
 cask "shottr"
 
-# Markdown renderer (used by raycast keybindings script)
-brew "glow"
+# Markdown viewer (used by raycast keybindings script)
+cask "macdown"

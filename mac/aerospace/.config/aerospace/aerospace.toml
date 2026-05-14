@@ -133,6 +133,11 @@ run = 'move-node-to-workspace 3'
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 6'
 
+# Markdown viewer — always floating
+[[on-window-detected]]
+if.app-id = 'com.uranusjr.macdown'
+run = 'layout floating'
+
 # System apps — always floating
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
