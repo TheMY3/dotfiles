@@ -111,6 +111,11 @@ alt-tab = 'workspace-back-and-forth'
 # Reload config
 alt-shift-semicolon = 'reload-config'
 
+# App shortcuts
+alt-e = 'exec-and-forget open -a Finder'
+alt-enter = 'exec-and-forget open -na Kitty'
+alt-b = 'exec-and-forget open -a "Google Chrome"'
+
 # Auto-assign apps to workspaces on launch.
 # To trigger for already-running apps: quit & reopen, or `aerospace reload-config`.
 [[on-window-detected]]
