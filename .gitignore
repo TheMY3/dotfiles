@@ -2,3 +2,4 @@
 .claude/*
 !.claude/settings.json
 mac/karabiner/.config/karabiner/automatic_backups/
+.DS_Store
