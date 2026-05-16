@@ -64,7 +64,7 @@ brew "hashicorp/tap/terraform"
 brew "ansible"
 brew "git-crypt"
 brew "gnupg"
-brew "keybase"
+cask "keybase"
 
 # Database
 cask "sequel-ace"
