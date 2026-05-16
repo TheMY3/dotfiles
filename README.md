@@ -5,7 +5,7 @@ Personal dotfiles managed with GNU Stow. Multi-platform: macOS + Fedora/Hyprland
 ## Structure
 
 ```
-common/   # cross-platform: zshrc, vim, ideavim, git, kitty, nvim, starship, claude
+common/   # cross-platform: zshrc, vim, ideavim, git, ghostty, nvim, starship, claude
 linux/    # Linux/Hyprland-only: hyprland, hyprshade, gtk, themes, icons, backgrounds, ml4w-overrides
 mac/      # macOS-specific: Brewfile, aerospace, sketchybar
 ```
@@ -23,7 +23,7 @@ rm -f ~/.claude/settings.json   # default {"theme":"dark"}, replace with our con
 
 # 3. Stow common packages
 cd common && stow -t ~ claude
-# add more as you need them: zshrc git ideavim kitty nvim starship vim
+# add more as you need them: zshrc git ideavim ghostty nvim starship vim
 
 # 4. Stow macOS-only packages (window manager + status bar)
 cd ../mac && stow -t ~ aerospace sketchybar
@@ -47,10 +47,10 @@ git -C ~/dotfiles checkout common/claude/.claude/settings.json
 cd ~/dotfiles
 
 # 1. Stow cross-platform
-cd common && stow -t ~ zshrc vim ideavim git kitty nvim starship claude
+cd common && stow -t ~ zshrc vim ideavim git ghostty nvim starship claude
 
 # 2. Stow Linux-only
-cd ../linux && stow -t ~ hyprshade gtk themes icons backgrounds
+cd ../linux && stow -t ~ kitty hyprshade gtk themes icons backgrounds
 
 # 3. ML4W overrides (can't stow — directories already exist)
 cp -r ~/dotfiles/linux/ml4w-overrides/.config/* ~/.config/
@@ -72,7 +72,7 @@ In ML4W Settings select: Monitors → `my.conf`, Keybindings → `my.conf`, Wind
 | `claude` | Claude Code settings, statusline, ccstatusline | `~/.claude/`, `~/.config/ccstatusline/` |
 | `git` | Git config | `~/.gitconfig` |
 | `ideavim` | IdeaVim config | `~/.ideavimrc` |
-| `kitty` | Kitty terminal | `~/.config/kitty/` |
+| `ghostty` | Ghostty terminal | `~/.config/ghostty/` |
 | `nvim` | Neovim + Lazy plugins | `~/.config/nvim/` |
 | `starship` | Starship prompt (Nord) | `~/.config/starship.toml` |
 | `vim` | Vim config | `~/.vimrc` |
@@ -89,6 +89,7 @@ In ML4W Settings select: Monitors → `my.conf`, Keybindings → `my.conf`, Wind
 
 | Package | Source |
 |---------|--------|
+| `kitty` | Kitty terminal config |
 | `backgrounds` | wallpapers |
 | `gtk` | GTK 3.0 settings + bookmarks |
 | `hyprland` | Hyprland scripts (gtk.sh) |
