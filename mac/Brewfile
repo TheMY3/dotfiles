@@ -54,6 +54,7 @@ cask "freelens"
 # PHP
 brew "php@8.4"
 brew "composer"
+brew "deployer"
 
 # Python tooling
 brew "uv"                    # fast Python package manager, provides uvx for MCP servers
