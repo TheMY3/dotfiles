@@ -74,6 +74,6 @@ time_format = "%R"
 format = '[](bg:#b48ead fg:prev_bg)[  $time ](fg:#2e3440 bg:#b48ead)'
 
 [character]
-success_symbol = "[ 󷞩](bold green)"
-error_symbol = "[ 󷞩](bold red)"
-vimcmd_symbol = "[  󷞩](bold green)"
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❯](bold green)"
