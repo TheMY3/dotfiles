@@ -61,6 +61,7 @@ brew "uv"                    # fast Python package manager, provides uvx for MCP
 # Infrastructure as Code
 brew "hashicorp/tap/terraform"
 brew "ansible"
+brew "git-crypt"
 
 # Database
 cask "sequel-ace"
