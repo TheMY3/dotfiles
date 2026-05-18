@@ -54,9 +54,6 @@ git_main_branch() {
   git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'
 }
 
-# macOS shims for Linux commands
-alias nproc='sysctl -n hw.logicalcpu'
-
 # ALIASES
 
 alias cc='claude'
