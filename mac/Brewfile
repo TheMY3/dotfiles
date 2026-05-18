@@ -1,6 +1,7 @@
 tap "peonping/tap"
 tap "hashicorp/tap"
 tap "nikitabobko/tap"
+tap "shivammathur/php"
 tap "shivammathur/extensions"
 tap "FelixKratz/formulae"
 
