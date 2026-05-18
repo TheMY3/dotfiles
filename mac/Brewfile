@@ -1,6 +1,7 @@
 tap "peonping/tap"
 tap "hashicorp/tap"
 tap "nikitabobko/tap"
+tap "shivammathur/extensions"
 tap "FelixKratz/formulae"
 
 # Core CLI
@@ -54,6 +55,7 @@ cask "freelens"
 # PHP
 brew "php@8.4"
 brew "composer"
+brew "shivammathur/extensions/yaml@8.4"
 brew "deployer"
 
 # Python tooling
