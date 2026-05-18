@@ -62,6 +62,7 @@ brew "deployer"
 
 # Python tooling
 brew "uv"                    # fast Python package manager, provides uvx for MCP servers
+brew "pre-commit"
 
 # Infrastructure as Code
 brew "hashicorp/tap/terraform"
