@@ -54,6 +54,9 @@ git_main_branch() {
   git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'
 }
 
+# macOS shims for Linux commands
+alias nproc='sysctl -n hw.logicalcpu'
+
 # ALIASES
 
 alias cc='claude'
@@ -137,3 +140,4 @@ export PATH="/opt/homebrew/opt/php@8.4/sbin:$PATH"
 # peon-ping quick controls
 alias peon="bash $HOME/.claude/hooks/peon-ping/peon.sh"
 [ -f "$HOME/.claude/hooks/peon-ping/completions.bash" ] && source "$HOME/.claude/hooks/peon-ping/completions.bash"
+alias nproc='sysctl -n hw.logicalcpu'
