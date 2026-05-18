@@ -9,6 +9,7 @@ sketchybar --add item media right \
              label.max_chars=20 \
              scroll_texts=off \
              update_freq=1 \
+             updates=on \
              script="$PLUGIN_DIR/media.sh" \
              popup.align=right \
            --add item media.full popup.media \

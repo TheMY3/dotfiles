@@ -33,6 +33,7 @@ cask "nikitabobko/tap/aerospace"
 
 # SketchyBar status bar (driven by aerospace workspace events)
 brew "sketchybar"
+brew "nowplaying-cli"          # used by sketchybar media plugin
 brew "borders"               # JankyBorders, launched from aerospace after-startup-command
 brew "jq"
 brew "switchaudio-osx"
