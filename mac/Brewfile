@@ -77,5 +77,8 @@ cask "sequel-ace"
 # Screenshots
 cask "shottr"
 
+# Utilities
+cask "keepingyouawake"
+
 # Markdown viewer (used by raycast keybindings script)
 cask "macdown"
