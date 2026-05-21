@@ -79,6 +79,7 @@ cask "shottr"
 
 # Utilities
 cask "keepingyouawake"
+cask "middleclick"
 brew "twitch-cli"
 
 # Markdown viewer (used by raycast keybindings script)
