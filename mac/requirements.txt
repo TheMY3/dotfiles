@@ -1,0 +1,9 @@
+# Python pip packages installed via:
+#   pip3 install --user --break-system-packages -r requirements.txt
+#
+# Aналог Brewfile, но для pip. На macOS с homebrew Python требуется
+# --break-system-packages (PEP 668), либо использовать venv.
+
+ruamel.yaml>=0.18  # YAML round-trip: сохраняет комменты и форматирование
+                    # при программных переделках. Используется в скриптах
+                    # синхронизации home-assistant-config.
