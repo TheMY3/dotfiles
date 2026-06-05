@@ -9,6 +9,7 @@ tap "FelixKratz/formulae"
 brew "stow"
 brew "gh"
 brew "starship"
+brew "rsync"
 
 # Shell tools used by .zshrc
 brew "fzf"
@@ -63,6 +64,10 @@ brew "deployer"
 # Python tooling
 brew "uv"                    # fast Python package manager, provides uvx for MCP servers
 brew "pre-commit"
+
+# Lua (required for Prometheus minifier — lua-scripts pre-commit hook)
+brew "lua"
+brew "luajit"
 
 # Infrastructure as Code
 brew "hashicorp/tap/terraform"
