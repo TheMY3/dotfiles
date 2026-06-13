@@ -1,5 +1,4 @@
 {
-  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
@@ -142,5 +141,8 @@
     "typescript-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "skipWorkflowUsageWarning": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
