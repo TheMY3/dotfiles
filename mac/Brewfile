@@ -25,7 +25,7 @@ brew "peonping/tap/peon-ping"
 
 # GUI / casks
 cask "claude"
-cask "claude-code"
+cask "claude-code@latest"
 cask "ghostty"
 cask "raycast"
 cask "karabiner-elements"
