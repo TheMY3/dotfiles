@@ -4,6 +4,9 @@ tap "nikitabobko/tap"
 tap "shivammathur/php"
 tap "shivammathur/extensions"
 tap "FelixKratz/formulae"
+tap "circleci-public/circleci"
+tap "rtk-ai/tap"
+tap "steipete/tap"
 
 # Core CLI
 brew "stow"
@@ -17,7 +20,6 @@ brew "bat"
 brew "eza"
 
 # Editors
-brew "vim"
 brew "ripgrep"
 
 # Notifications
@@ -56,9 +58,9 @@ brew "helm"
 cask "freelens"
 
 # PHP
-brew "php@8.4"
+brew "php@8.5"
 brew "composer"
-brew "shivammathur/extensions/yaml@8.4"
+brew "shivammathur/extensions/yaml@8.5"
 brew "deployer"
 
 # Python tooling
@@ -76,9 +78,6 @@ brew "git-crypt"
 brew "gnupg"
 cask "keybase"
 
-# Database
-cask "sequel-ace"
-
 # Screenshots
 cask "shottr"
 
@@ -89,3 +88,14 @@ brew "twitch-cli"
 
 # Markdown viewer (used by raycast keybindings script)
 cask "macdown"
+
+# CircleCI CLI
+# Homebrew v6+ requires trusting the tap once before install:
+#   brew trust circleci-public/circleci
+cask "circleci-public/circleci/circleci@next"
+
+# RTK CLI
+brew "rtk-ai/tap/rtk"
+
+# CodexBar menu bar app
+cask "steipete/tap/codexbar"
