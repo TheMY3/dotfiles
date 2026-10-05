@@ -131,10 +131,11 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.volta/bin:$PATH"
 
-export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.4/sbin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.5/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.5/sbin:$PATH"
 
 # peon-ping quick controls
 alias peon="bash $HOME/.claude/hooks/peon-ping/peon.sh"
 [ -f "$HOME/.claude/hooks/peon-ping/completions.bash" ] && source "$HOME/.claude/hooks/peon-ping/completions.bash"
 alias nproc='sysctl -n hw.logicalcpu'
+export PATH="$PATH:/usr/local/platform-tools"
