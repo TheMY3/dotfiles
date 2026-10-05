@@ -34,3 +34,8 @@ window-padding-y = 10
 # Misc
 scrollback-limit = 2000
 confirm-close-surface = false
+
+# Left Option sends Alt/Meta (Claude Code and zsh shortcuts); right Option still types special characters
+macos-option-as-alt = left
+# Bounce the Dock icon and mark the title when a program rings the bell
+bell-features = title,attention
