@@ -85,6 +85,7 @@ cask "shottr"
 cask "keepingyouawake"
 cask "middleclick"
 brew "twitch-cli"
+brew "terminal-notifier" # peon-ping standard notifications: click opens the terminal
 
 # Markdown viewer (used by raycast keybindings script)
 cask "macdown"
