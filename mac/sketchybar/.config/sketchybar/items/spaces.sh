@@ -82,3 +82,9 @@ fi
 # sketchybar  --add item change_windows left \
 #             --set change_windows script="$PLUGIN_DIR/change_windows.sh" \
 #             --subscribe change_windows space_changes
+
+# Claude Code waiting for input → orange terminal workspace (hooks trigger claude_attention)
+sketchybar --add event claude_attention \
+           --add item claude.attention left \
+           --set claude.attention drawing=off updates=on script="$PLUGIN_DIR/claude_attention.sh" \
+           --subscribe claude.attention claude_attention aerospace_workspace_change
