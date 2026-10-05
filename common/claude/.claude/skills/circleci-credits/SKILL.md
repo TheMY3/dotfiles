@@ -1,67 +1,80 @@
 ---
 name: circleci-credits
-description: Use when CircleCI credits or storage run out, CI is slow or expensive, or the user wants to optimize/cheapen a CircleCI pipeline in any project (Laravel/PHP + node especially). Checklist of what to measure and which levers actually pay off, learned on arzhub (Oct 2026).
+description: Use when CircleCI credits or storage run out, CI is slow or expensive, or the user wants to optimize/cheapen a CircleCI pipeline in any project (Laravel/PHP + node especially). Checklist of what to measure and which levers actually pay off, learned on a Laravel project (Oct 2026).
 ---
 
-# Экономия кредитов CircleCI
+# Saving CircleCI credits
 
-Опыт arzhub (октябрь 2026, PR #410, задача #409): Free-план, 30 000 кредитов в месяц
-кончались за две недели. Сначала мерить, потом резать — интуиция врала не раз.
+Learned on a Laravel project (October 2026): Free plan, 30,000 credits a month ran out
+in two weeks. Measure first, cut second — intuition was wrong more than once.
 
-## 1. Замерить
+## 1. Measure
 
-- Кредиты по заданиям — Insights API (токен `CIRCLECI_TOKEN`, личный):
-  `GET /api/v2/insights/gh/<org>/<repo>/workflows` → по workflow,
-  `…/workflows/<wf>/jobs?all-branches=true` и `&branch=master` → по заданиям.
-  Смотреть `total_credits_used`, медиану длительности, долю master.
-- Шаги задания и их время — `GET /api/v1.1/project/github/<org>/<repo>/<build_num>` → `steps[].actions[].run_time_millis`.
-- Тесты по времени — junit. Внимание: junit из `paratest --parallel` у нас был неполным
-  (1064 из 1801) — для честных цифр гонять последовательно.
-- Free: 2 ГБ·мес хранилища и 1 ГБ сети, сверх — **420 кредитов за ГБ** из тех же кредитов.
-  **Сроки хранения на Free не настраиваются** (Plan → Usage Controls есть только у платных):
-  workspace и кэши 15 дней, артефакты 30. Экономить можно только тем, что кладёшь.
-- CircleCI MCP (`@circleci/mcp-server-circleci`, user scope) — логи, flaky, usage CSV.
+- Credits per job — Insights API (personal `CIRCLECI_TOKEN`):
+  `GET /api/v2/insights/gh/<org>/<repo>/workflows` → per workflow,
+  `…/workflows/<wf>/jobs?all-branches=true` and `&branch=master` → per job.
+  Look at `total_credits_used`, median duration, master's share.
+- Job steps and their timing — `GET /api/v1.1/project/github/<org>/<repo>/<build_num>` → `steps[].actions[].run_time_millis`.
+- Test timing — junit. Caveat: junit from `paratest --parallel` was incomplete
+  (1064 of 1801) — run sequentially for honest numbers.
+- Free: 2 GB·month storage and 1 GB network; beyond that **420 credits per GB** from the same pool.
+  **Retention is not configurable on Free** (Plan → Usage Controls is paid-only):
+  workspace and caches 15 days, artifacts 30. The only saving is in what you store.
+- CircleCI MCP `circleci-hosted` (https://mcp.circleci.com/v1/mcp, OAuth, user scope):
+  `list_runs` → `list_run_workflows` → `list_workflow_jobs` → `get_job` (step timing),
+  `get_job_logs`, `get_job_resource_usage`, `download_usage_data` (`org: gh/<org>`, per-job
+  CSV with credits). The old `@circleci/mcp-server-circleci` is deprecated; some of its
+  tools fail on `next_page_token`.
 
-## 2. Рычаги по убыванию эффекта (arzhub)
+## 2. Levers, biggest first
 
-1. **Xdebug в тестах выключить: `-e XDEBUG_MODE=off`** в `docker run` шага тестов.
-   Образ разработки держал Xdebug в `develop` — весь PHP вдвое медленнее. Вместе с п. 3
-   (лишний сид) шаг тестов на CI 213 → 64 с. Проверять **эффективный** режим:
-   `php -r 'var_dump(xdebug_info("mode"));'` — `ini_get` врёт, env его не показывает.
-   Локально: `composer test` со `"@putenv XDEBUG_MODE=off"`, в `docker compose exec` — `-e XDEBUG_MODE=off`.
-2. **Покрытие не считать, если цифру никто не смотрит** (clover лежал артефактом
-   без потребителя; с xdebug coverage прогон +50%).
-3. **Тесты, гоняющие тяжёлый импорт/сид в каждом методе** — главная статья CPU.
-   Лечение: общий снимок базы раз на процесс. SQLite `:memory:` + RefreshDatabase:
-   первый тест пишет импортированные таблицы в файл, остальные `ATTACH` +
-   `DELETE`/`INSERT INTO main.t SELECT * FROM snap.t` внутри своей транзакции
-   (18 мс против 2–6 с). `DETACH` в транзакции падает — держать подключённым.
-   Тесты, проверяющие сам импорт, оставить честными.
-4. **Не гонять пайплайн на коммитах только с документацией** — dynamic config
-   (`setup: true` + орб `circleci/continuation`; галка Project Settings → Advanced →
-   «Enable dynamic config using setup workflows»). Setup-задание на `cimg/base`,
-   `resource_class: small`, ~7 с: на master `git diff pipeline.git.base_revision..HEAD`,
-   на ветке — от `merge-base` с master; только `docs/**`, `*.md` → `circleci-agent step halt`
-   без continuation. Проверять `grep` в чистом bash (обёртки шелла врут).
-5. **Без workspace**: каждое задание само делает checkout и берёт зависимости из кэша.
-   `persist_to_workspace ./*` с `vendor` на каждый прогон — главный расход хранилища.
-6. **Кэш npm — `~/.npm`, не `node_modules`**: `npm ci` сносит `node_modules`.
-7. **Blade + paratest на холодном кэше**: шаблон компилируется не атомарно, воркеры
-   читают недописанный файл («Unclosed '('» в случайном тесте). `php artisan view:cache`
-   перед тестами.
+1. **Turn Xdebug off in tests: `-e XDEBUG_MODE=off`** in the test step's `docker run`.
+   The dev image kept Xdebug in `develop` — all PHP twice as slow. Together with item 3
+   (redundant seed) the CI test step went 213 → 64 s. Check the **effective** mode:
+   `php -r 'var_dump(xdebug_info("mode"));'` — `ini_get` lies, env doesn't show it.
+   Locally: `composer test` with `"@putenv XDEBUG_MODE=off"`; in `docker compose exec` — `-e XDEBUG_MODE=off`.
+   **E2E too:** Xdebug in the php-fpm serving Cypress slows every page.
+   Another project (Oct 2026): a mounted `docker/php-fpm/xdebug.ini` with
+   `debug,develop,coverage` + `start_with_request=yes` → ~9 s per page; after
+   `xdebug.mode=off` E2E 7:00 → 2:09, full run 10 → 4.6 min. Keep the file with `off`
+   rather than removing it: the base PHP image defaults to `develop`.
+   Per-spec timing — the table at the end of the E2E step log (`get_job_logs`).
+2. **Don't collect coverage if nobody reads the number** (clover sat as an artifact
+   with no consumer; xdebug coverage added +50% to the run).
+3. **Tests running a heavy import/seed in every method** — the main CPU cost.
+   Fix: one shared DB snapshot per process. SQLite `:memory:` + RefreshDatabase:
+   the first test writes the imported tables to a file, the rest `ATTACH` +
+   `DELETE`/`INSERT INTO main.t SELECT * FROM snap.t` inside their own transaction
+   (18 ms vs 2–6 s). `DETACH` inside a transaction fails — keep it attached.
+   Tests that verify the import itself stay honest.
+4. **Skip the pipeline on docs-only commits** — dynamic config
+   (`setup: true` + `circleci/continuation` orb; enable Project Settings → Advanced →
+   "Enable dynamic config using setup workflows"). Setup job on `cimg/base`,
+   `resource_class: small`, ~7 s: on master `git diff pipeline.git.base_revision..HEAD`,
+   on a branch — from `merge-base` with master; only `docs/**`, `*.md` → `circleci-agent step halt`
+   without continuation. Test the `grep` in plain bash (shell wrappers lie).
+5. **No workspace**: each job does its own checkout and restores dependencies from cache.
+   `persist_to_workspace ./*` with `vendor` on every run was the main storage cost.
+6. **Cache npm at `~/.npm`, not `node_modules`**: `npm ci` wipes `node_modules`.
+7. **Blade + paratest on a cold cache**: templates compile non-atomically, workers
+   read a half-written file ("Unclosed '('" in a random test). Run `php artisan view:cache`
+   before tests.
 
-## 3. Что почти не даёт
+## 3. What barely helps
 
-- **`resource_class` и docker вместо machine.** Тесты упираются в CPU: large в 2× дороже
-  и в ~2× быстрее — кредиты те же. Docker экономит только накладные (~20 с из 230).
-- **Двойной вызов дешёвой команды** — мерить, прежде чем чинить (у нас 0,01 с).
-- **Замеры, снятые с Xdebug, врут о пропорциях.** Агент насчитал 35–40 с на «пороге
-  каталога» (5000 строк-заглушек в фейках HTTP); без Xdebug это 3 с — не стали делать.
-  Сначала выключить Xdebug, потом мерить остальное.
-- **Лишний сид перед импортом** может превращать первый прогон из базовой линии в
-  правку (журнал изменений на десятки тысяч строк) — искать устаревшие тестовые хелперы.
+- **`resource_class` and docker instead of machine.** Tests are CPU-bound: large costs 2×
+  and runs ~2× faster — same credits. Docker only saves overhead (~20 s of 230).
+- **A cheap command called twice** — measure before fixing (it was 0.01 s).
+- **Measurements taken with Xdebug on distort proportions.** An agent counted 35–40 s on a
+  "catalog threshold" (5,000 stub rows in HTTP fakes); without Xdebug it was 3 s — not done.
+  Turn Xdebug off first, then measure the rest.
+- **A redundant seed before an import** can turn the first run from a baseline into an
+  edit (a change log of tens of thousands of rows) — look for stale test helpers.
 
-## 4. Открытое решение
+## 4. Re-running on master after a PR merge — don't (decided 2026-10-03)
 
-Гонять ли тесты на master после вливания PR (половина прогонов — master, код уже
-проверен на ветке). Риск — ветка отстала от master. Решать после ускорения тестов.
+The re-run was 40–48% of the projects' credits. In the setup job on master:
+`git log --first-parent --format=%ce "$BASE..HEAD" | sort -u` — if it's only
+`noreply@github.com` (merge or squash of a PR via GitHub), `circleci-agent step halt; exit 0`
+(`halt` doesn't stop the script). Direct and mixed pushes still run tests.
+Risk — a stale branch; branch protection / merge queue are unavailable on private Free repos.
