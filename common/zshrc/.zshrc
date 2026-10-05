@@ -139,3 +139,13 @@ alias peon="bash $HOME/.claude/hooks/peon-ping/peon.sh"
 [ -f "$HOME/.claude/hooks/peon-ping/completions.bash" ] && source "$HOME/.claude/hooks/peon-ping/completions.bash"
 alias nproc='sysctl -n hw.logicalcpu'
 export PATH="$PATH:/usr/local/platform-tools"
+
+# Claude Code: private settings (autoMode environment) live outside this public repo.
+# Org server-managed settings override a local managed-settings.json, so pass them per invocation.
+claude() {
+  if [ -f "$HOME/.claude/private-settings.json" ]; then
+    command claude --settings "$HOME/.claude/private-settings.json" "$@"
+  else
+    command claude "$@"
+  fi
+}
