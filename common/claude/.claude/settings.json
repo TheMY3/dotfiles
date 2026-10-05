@@ -1,5 +1,5 @@
 {
-  "model": "opus",
+  "model": "fable",
   "hooks": {
     "SessionStart": [
       {
@@ -206,5 +206,6 @@
   "alwaysThinkingEnabled": true,
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "maxProseWidth": 100
 }
