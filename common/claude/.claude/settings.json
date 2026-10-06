@@ -207,5 +207,5 @@
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "agentPushNotifEnabled": true,
-  "maxProseWidth": 100
+  "maxProseWidth": 150
 }
