@@ -73,6 +73,7 @@ defaults (`good first issue`, `wontfix`, `duplicate`…): close reasons replace 
 - Waiting on another issue — native link plus `status: blocked`:
   `gh issue edit <n> --add-blocked-by <m>`. A plain "ждём #m" in text is not enough.
 - A post-release measurement is a separate `type: check` with the baseline inside, not a comment on the old research.
+- A `type: check` is a sub-issue of the work it measures, not of the plan: otherwise the plan stays open until the last check date.
 - Closing a parent while parts are still open — move them to a live parent or detach them
   (`gh issue edit <n> --remove-parent`).
 
